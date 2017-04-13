@@ -42,6 +42,8 @@ class Kiyoh {
 	}
 
 	/**
+	 * Gets the 10 latest reviews
+	 *
 	 * @return Review[]
 	 */
 	public function getReviews(){
