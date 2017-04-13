@@ -1,0 +1,7 @@
+/vendor
+/node_modules
+/test.php
+/composer.lock
+/.idea
+/GUI
+.DS_Store
