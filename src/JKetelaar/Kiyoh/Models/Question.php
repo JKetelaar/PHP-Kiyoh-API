@@ -71,6 +71,6 @@ class Question {
 	}
 
 	public function isValid(){
-		return $this->score >= 0;
+		return $this->score > 0;
 	}
 }
