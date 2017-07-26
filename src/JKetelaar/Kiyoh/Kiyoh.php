@@ -47,56 +47,21 @@ class Kiyoh {
 	 * @return Review[]
 	 */
 	public function getReviews(){
-		return $this->parseContent($this->getContent());
-	}
-
-	/**
-	 * @param string|null $content
-	 *
-	 * @return Review[]
-	 */
-	public function parseContent( $content = null ) {
-		if ( $content === null ) {
-			$content = $this->getContent();
-		}
-
-		$reviewsArray = [];
-		$content      = simplexml_load_string( $content );
-		$reviews      = $content->review_list->review;
-
-		if ( $reviews->count() > 0 ) {
-			foreach ( $reviews as $r ) {
-				$rCustomer = $r->customer;
-				$customer  = new Customer( $this->elementToString( $rCustomer->name ), $this->elementToString( $rCustomer->place ) );
-
-				$questions  = [];
-				$rQuestions = $r->questions->question;
-				foreach ( $rQuestions as $q ) {
-					$id          = $this->elementToString( $q->id );
-					$title       = $this->elementToString( $q->title );
-					$score       = $this->elementToString( $q->score );
-					$questions[] = new Question( $id, $title, $score );
-				}
-
-				$id = $this->elementToString( $r->id );
-				$date = new \DateTime($this->elementToString( $rCustomer->date ));
-				$totalScore = $this->elementToString( $r->totalScore );
-				$recommended = $this->elementToString( $r->recommended );
-				$pros = $this->elementToString( $r->pros );
-				$cons = $this->elementToString( $r->cons );
-
-				$reviewsArray[] = new Review($id, $customer, $date, $totalScore, $questions, $recommended, $pros, $cons);
-			}
-		}
-
-		return $reviewsArray;
+		return $this->parseReviews($this->getContent());
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getContent() {
-		return $this->getClient()->request( 'GET', $this->getRecentCompanyReviewsURL() )->getBody()->getContents();
+		return
+            $this->getClient()->request(
+                'GET',
+                $this->getRecentCompanyReviewsURL()
+            )
+            ->getBody()
+            ->getContents()
+        ;
 	}
 
 	/**
@@ -112,8 +77,66 @@ class Kiyoh {
 	 * @return string
 	 */
 	public function getRecentCompanyReviewsURL() {
-		return sprintf( self::RECENT_COMPANY_REVIEWS_URL, $this->connectorCode, $this->companyCode );
+		return sprintf(
+		    self::RECENT_COMPANY_REVIEWS_URL,
+            $this->connectorCode,
+            $this->companyCode
+        );
 	}
+
+    /**
+     * @param string|null $content
+     *
+     * @return Review[]
+     */
+    protected function parseReviews( $content = null ) {
+        if ( $content === null ) {
+            $content = $this->getContent();
+        }
+
+        $reviewsArray = [];
+        $content      = simplexml_load_string( $content );
+        $reviews      = $content->review_list->review;
+
+        if ( $reviews->count() > 0 ) {
+            foreach ( $reviews as $r ) {
+                $rCustomer = $r->customer;
+                $customer  = new Customer(
+                    $this->elementToString( $rCustomer->name ),
+                    $this->elementToString( $rCustomer->place )
+                );
+
+                $questions  = [];
+                $rQuestions = $r->questions->question;
+                foreach ( $rQuestions as $q ) {
+                    $id          = $this->elementToString( $q->id );
+                    $title       = $this->elementToString( $q->title );
+                    $score       = $this->elementToString( $q->score );
+                    $questions[] = new Question( $id, $title, $score );
+                }
+
+                $id = $this->elementToString( $r->id );
+                $date = new \DateTime($this->elementToString( $rCustomer->date ));
+                $totalScore = $this->elementToString( $r->totalScore );
+                $recommended = $this->elementToString( $r->recommended );
+                $pros = $this->elementToString( $r->pros );
+                $cons = $this->elementToString( $r->cons );
+
+                $reviewsArray[] = new Review(
+                    $id,
+                    $customer,
+                    $date,
+                    $totalScore,
+                    $questions,
+                    $recommended,
+                    $pros,
+                    $cons
+                );
+            }
+        }
+
+        return $reviewsArray;
+    }
 
 	/**
 	 * @param \SimpleXMLElement $object
