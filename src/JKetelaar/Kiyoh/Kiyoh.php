@@ -3,9 +3,12 @@
 namespace JKetelaar\Kiyoh;
 
 use GuzzleHttp\Client;
+use JKetelaar\Kiyoh\Models\AverageScores;
+use JKetelaar\Kiyoh\Models\Category;
 use JKetelaar\Kiyoh\Models\Customer;
 use JKetelaar\Kiyoh\Models\Question;
 use JKetelaar\Kiyoh\Models\Review;
+use JKetelaar\Kiyoh\Models\Company;
 
 /**
  * @author JKetelaar
@@ -49,6 +52,15 @@ class Kiyoh {
 	public function getReviews(){
 		return $this->parseReviews($this->getContent());
 	}
+
+    /**
+     * Gets company info, category, (average) scores, etc.
+     *
+     * @return Company
+     */
+	public function getCompany() {
+	    return $this->parseCompany($this->getContent());
+    }
 
 	/**
 	 * @return string
@@ -136,6 +148,48 @@ class Kiyoh {
         }
 
         return $reviewsArray;
+    }
+
+    /**
+     * @param string|null $content
+     *
+     * @return Company
+     */
+    protected function parseCompany( $content = null ) {
+        if ( $content === null ) {
+            $content = $this->getContent();
+        }
+
+        $content = simplexml_load_string( $content );
+        $cCompany = $content->company;
+
+        $questions  = [];
+        $cQuestions = $cCompany->average_scores->questions->question;
+        foreach ( $cQuestions as $q ) {
+            $id          = $this->elementToString( $q->id );
+            $title       = $this->elementToString( $q->title );
+            $score       = $this->elementToString( $q->score );
+            $questions[] = new Question( $id, $title, $score );
+        }
+
+        $company = new Company(
+            (int) $this->companyCode,
+            $this->elementToString($cCompany->name),
+            $this->elementToString($cCompany->url),
+            new Category(
+                (int) $this->elementToString($cCompany->category->id),
+                $this->elementToString($cCompany->category->title)
+            ),
+            (float) $this->elementToString($cCompany->total_score),
+            new AverageScores(
+                $questions,
+                (int) $this->elementToString($cCompany->average_scores->review_amount)
+            ),
+            (int) $this->elementToString($cCompany->total_reviews),
+            (int) $this->elementToString($cCompany->total_views)
+        );
+
+        return $company;
     }
 
 	/**
