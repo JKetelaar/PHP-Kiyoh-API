@@ -15,3 +15,4 @@ $kiyoh = new \JKetelaar\Kiyoh\Kiyoh($connector, $company);
 $reviews = $kiyoh->getReviews();
 echo($reviews[0]->getId());
 ```
+@todo readme
