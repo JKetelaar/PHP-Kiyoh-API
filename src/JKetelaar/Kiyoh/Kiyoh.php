@@ -15,7 +15,7 @@ use JKetelaar\Kiyoh\Models\Company;
  */
 class Kiyoh {
 
-	const RECENT_COMPANY_REVIEWS_URL = 'https://www.kiyoh.nl/xml/recent_company_reviews.xml?connectorcode=%s&company_id=%s';
+	const RECENT_COMPANY_REVIEWS_URL = 'https://www.kiyoh.nl/xml/recent_company_reviews.xml?connectorcode=%s&company_id=%s&reviewcount=%s&showextraquestions=1';
 
 	/**
 	 * @var string
@@ -37,10 +37,12 @@ class Kiyoh {
 	 *
 	 * @param string $connectorCode
 	 * @param int    $companyCode
+	 * @param mixed  $reviewCount Either a number of reviews to retrieve or 'all'
 	 */
-	public function __construct( $connectorCode, $companyCode ) {
+	public function __construct( $connectorCode, $companyCode, $reviewCount = 10 ) {
 		$this->connectorCode = $connectorCode;
 		$this->companyCode   = $companyCode;
+		$this->reviewCount   = $reviewCount;
 		$this->client        = new Client();
 	}
 
@@ -92,7 +94,8 @@ class Kiyoh {
 		return sprintf(
 		    self::RECENT_COMPANY_REVIEWS_URL,
             $this->connectorCode,
-            $this->companyCode
+            $this->companyCode,
+            $this->reviewCount
         );
 	}
 
@@ -109,7 +112,6 @@ class Kiyoh {
         $reviewsArray = [];
         $content      = simplexml_load_string( $content );
         $reviews      = $content->review_list->review;
-
         if ( $reviews->count() > 0 ) {
             foreach ( $reviews as $r ) {
                 $rCustomer = $r->customer;
@@ -129,10 +131,12 @@ class Kiyoh {
 
                 $id = $this->elementToString( $r->id );
                 $date = new \DateTime($this->elementToString( $rCustomer->date ));
-                $totalScore = $this->elementToString( $r->totalScore );
-                $recommended = $this->elementToString( $r->recommended );
-                $pros = $this->elementToString( $r->pros );
-                $cons = $this->elementToString( $r->cons );
+                $totalScore = $this->elementToString( $r->total_score );
+                $recommended = $this->elementToString( $r->recommendation );
+                $pros = $this->elementToString( $r->positive );
+                $cons = $this->elementToString( $r->negative );
+                $purchase = $this->elementToString( $r->purchase );
+                $reaction = $this->elementToString( $r->reaction );
 
                 $reviewsArray[] = new Review(
                     $id,
@@ -142,7 +146,9 @@ class Kiyoh {
                     $questions,
                     $recommended,
                     $pros,
-                    $cons
+                    $cons,
+                    $purchase,
+                    $reaction
                 );
             }
         }
