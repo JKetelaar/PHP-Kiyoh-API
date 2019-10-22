@@ -1,34 +1,35 @@
 {
-    "name": "jketelaar/php-kiyoh-api",
-    "type": "library",
-    "authors": [
-        {
-            "name": "JKetelaar",
-            "email": "jeroen@ketelaar.me",
-            "homepage": "http://jketelaar.nl/"
-        },
-        {
-            "name": "Elwin Dokter",
-            "email": "elwin@reprovinci.nl",
-            "homepage": "https://lwin.nl"
-        }
-    ],
-    "description": "Allows you to interact with Kiyoh using PHP",
-    "keywords": [
-        "kiyoh",
-        "api",
-        "php"
-    ],
-    "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
-    "version": "1.0.1",
-    "license": "GPL-3.0+",
-    "require": {
-        "php": "^5.5 || ^7.0",
-        "guzzlehttp/guzzle": "^6.2"
+  "name": "jketelaar/php-kiyoh-api",
+  "type": "library",
+  "authors": [
+    {
+      "name": "JKetelaar",
+      "email": "jeroen@ketelaar.me",
+      "homepage": "http://jketelaar.nl/"
     },
-    "autoload": {
-        "psr-0": {
-            "JKetelaar": "src/"
-        }
+    {
+      "name": "Elwin Dokter",
+      "email": "elwin@reprovinci.nl",
+      "homepage": "https://lwin.nl"
     }
+  ],
+  "description": "Allows you to interact with Kiyoh using PHP",
+  "keywords": [
+    "kiyoh",
+    "api",
+    "php"
+  ],
+  "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
+  "version": "1.0.1",
+  "license": "GPL-3.0+",
+  "require": {
+    "php": "^5.5 || ^7.0",
+    "guzzlehttp/guzzle": "^6.2",
+    "ext-simplexml": "*"
+  },
+  "autoload": {
+    "psr-0": {
+      "JKetelaar": "src/"
+    }
+  }
 }

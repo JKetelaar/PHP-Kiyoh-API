@@ -1,225 +1,200 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: elwin <elwin@reprovinci.nl>
- * Date: 7/26/17
- * Time: 2:00 PM
+ * @author JKetelaar
  */
 
 namespace JKetelaar\Kiyoh\Models;
 
-/**
- * Class Company
- *
- * @package JKetelaar\Kiyoh\Models
- */
+
 class Company
 {
-    /** @var int */
-    private $id;
+    /**
+     * @var float
+     */
+    private $averageRating;
 
-    /** @var string */
-    private $name;
+    /**
+     * @var int
+     */
+    private $numberReviews;
 
-    /** @var string */
-    private $url;
+    /**
+     * @var float
+     */
+    private $last12MonthAverageRating;
 
-    /** @var Category */
-    private $category;
+    /**
+     * @var int
+     */
+    private $last12MonthNumberReviews;
 
-    /** @var float */
-    private $totalScore;
+    /**
+     * @var int
+     */
+    private $percentageRecommendation;
 
-    /** @var AverageScores */
-    private $averageScores;
+    /**
+     * @var int
+     */
+    private $locationId;
 
-    /** @var int */
-    private $totalReviews;
+    /**
+     * @var string
+     */
+    private $locationName;
 
-    /** @var int */
-    private $totalViews;
+    /**
+     * @var Review[]
+     */
+    private $reviews;
 
     /**
      * Company constructor.
-     *
-     * @param int           $id
-     * @param string        $name
-     * @param string        $url
-     * @param Category      $category
-     * @param float         $totalScore
-     * @param AverageScores $averageScores
-     * @param int           $totalReviews
-     * @param int           $totalViews
+     * @param float $averageRating
+     * @param int $numberReviews
+     * @param float $last12MonthAverageRating
+     * @param int $last12MonthNumberReviews
+     * @param int $percentageRecommendation
+     * @param int $locationId
+     * @param string $locationName
      */
-    public function __construct(
-        $id,
-        $name,
-        $url,
-        Category $category,
-        $totalScore,
-        AverageScores $averageScores,
-        $totalReviews,
-        $totalViews
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->url = $url;
-        $this->category = $category;
-        $this->totalScore = $totalScore;
-        $this->averageScores = $averageScores;
-        $this->totalReviews = $totalReviews;
-        $this->totalViews = $totalViews;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
+    public function __construct(float $averageRating, int $numberReviews, float $last12MonthAverageRating, int $last12MonthNumberReviews, int $percentageRecommendation, int $locationId, string $locationName)
     {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     * @return Company
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return Company
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     * @return Company
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @return Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param Category $category
-     * @return Company
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
+        $this->averageRating = $averageRating;
+        $this->numberReviews = $numberReviews;
+        $this->last12MonthAverageRating = $last12MonthAverageRating;
+        $this->last12MonthNumberReviews = $last12MonthNumberReviews;
+        $this->percentageRecommendation = $percentageRecommendation;
+        $this->locationId = $locationId;
+        $this->locationName = $locationName;
     }
 
     /**
      * @return float
      */
-    public function getTotalScore()
+    public function getAverageRating(): float
     {
-        return $this->totalScore;
+        return $this->averageRating;
     }
 
     /**
-     * @param float $totalScore
-     * @return Company
+     * @param float $averageRating
      */
-    public function setTotalScore($totalScore)
+    public function setAverageRating(float $averageRating): void
     {
-        $this->totalScore = $totalScore;
-
-        return $this;
-    }
-
-    /**
-     * @return AverageScores
-     */
-    public function getAverageScores()
-    {
-        return $this->averageScores;
-    }
-
-    /**
-     * @param AverageScores $averageScores
-     * @return Company
-     */
-    public function setAverageScores($averageScores)
-    {
-        $this->averageScores = $averageScores;
-
-        return $this;
+        $this->averageRating = $averageRating;
     }
 
     /**
      * @return int
      */
-    public function getTotalReviews()
+    public function getNumberReviews(): int
     {
-        return $this->totalReviews;
+        return $this->numberReviews;
     }
 
     /**
-     * @param int $totalReviews
-     * @return Company
+     * @param int $numberReviews
      */
-    public function setTotalReviews($totalReviews)
+    public function setNumberReviews(int $numberReviews): void
     {
-        $this->totalReviews = $totalReviews;
+        $this->numberReviews = $numberReviews;
+    }
 
-        return $this;
+    /**
+     * @return float
+     */
+    public function getLast12MonthAverageRating(): float
+    {
+        return $this->last12MonthAverageRating;
+    }
+
+    /**
+     * @param float $last12MonthAverageRating
+     */
+    public function setLast12MonthAverageRating(float $last12MonthAverageRating): void
+    {
+        $this->last12MonthAverageRating = $last12MonthAverageRating;
     }
 
     /**
      * @return int
      */
-    public function getTotalViews()
+    public function getLast12MonthNumberReviews(): int
     {
-        return $this->totalViews;
+        return $this->last12MonthNumberReviews;
     }
 
     /**
-     * @param int $totalViews
-     * @return Company
+     * @param int $last12MonthNumberReviews
      */
-    public function setTotalViews($totalViews)
+    public function setLast12MonthNumberReviews(int $last12MonthNumberReviews): void
     {
-        $this->totalViews = $totalViews;
-
-        return $this;
+        $this->last12MonthNumberReviews = $last12MonthNumberReviews;
     }
+
+    /**
+     * @return int
+     */
+    public function getPercentageRecommendation(): int
+    {
+        return $this->percentageRecommendation;
+    }
+
+    /**
+     * @param int $percentageRecommendation
+     */
+    public function setPercentageRecommendation(int $percentageRecommendation): void
+    {
+        $this->percentageRecommendation = $percentageRecommendation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLocationId(): int
+    {
+        return $this->locationId;
+    }
+
+    /**
+     * @param int $locationId
+     */
+    public function setLocationId(int $locationId): void
+    {
+        $this->locationId = $locationId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocationName(): string
+    {
+        return $this->locationName;
+    }
+
+    /**
+     * @param string $locationName
+     */
+    public function setLocationName(string $locationName): void
+    {
+        $this->locationName = $locationName;
+    }
+
+    /**
+     * @return Review[]
+     */
+    public function getReviews(): array
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * @param Review[] $reviews
+     */
+    public function setReviews(array $reviews): void
+    {
+        $this->reviews = $reviews;
+    }
+
 }

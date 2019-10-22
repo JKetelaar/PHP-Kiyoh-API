@@ -14,13 +14,13 @@ $company = 1234; // Change with your Company number
 
 $kiyoh = new \JKetelaar\Kiyoh\Kiyoh($connector, $company);
 
-/** @var \JKetelaar\Kiyoh\Models\Review[] $reviews */
+/** @var \JKetelaar\Kiyoh\ModelsOld\Review[] $reviews */
 $reviews = $kiyoh->getReviews();
 
 var_dump($reviews[0]->getId());
 // ..
 
-/** @var \JKetelaar\Kiyoh\Models\Company $company */
+/** @var \JKetelaar\Kiyoh\ModelsOld\Company $company */
 $company = $kiyoh->getCompany();
 
 var_dump($company->getTotalScore());
