@@ -7,37 +7,24 @@ Then start using the API using something like:
 
 ```php
 <?php
+/**
+ * @author JKetelaar
+ */
 require_once('vendor/autoload.php');
 
-$connector = 'YOUR_CONNECTOR_CODE'; // Change with your Connector code
-$company = 1234; // Change with your Company number
+$connector = 'xxxxxxxx'; // Change with your hash
+$count = 50; // Amount of reviews you want to get
 
-$kiyoh = new \JKetelaar\Kiyoh\Kiyoh($connector, $company);
+$kiyoh = new \JKetelaar\Kiyoh\Kiyoh($connector, $count);
 
-/** @var \JKetelaar\Kiyoh\ModelsOld\Review[] $reviews */
-$reviews = $kiyoh->getReviews();
-
-var_dump($reviews[0]->getId());
-// ..
-
-/** @var \JKetelaar\Kiyoh\ModelsOld\Company $company */
 $company = $kiyoh->getCompany();
 
-var_dump($company->getTotalScore());
-var_dump($company->getUrl());
-var_dump($company->getCategory());
-var_dump($company->getCategory()->getTitle());
-var_dump($company->getAverageScores()->getQuestions());
-// ..
+var_dump($company->getReviews()[0]->getId());
+
+var_dump($company->getLocationName());
+var_dump($company->getAverageRating());
+var_dump($company->getNumberReviews());
 ```
 
 ### Example outputs
-```php
-$kiyoh->getReviews();
-```
-![alt text](docs/get_reviews_sample.png "getReviews() sample data")
-
-```php
-$kiyoh->getCompany();
-```
-![alt text](docs/get_company_sample.png "getCompany() sample data")
+> TODO: Add example output
