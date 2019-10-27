@@ -8,7 +8,7 @@
       "homepage": "http://jketelaar.nl/"
     }
   ],
-  "description": "Allows you to interact with Kiyoh using PHP",
+  "description": "Allows you to interact with KiyOh using PHP",
   "keywords": [
     "kiyoh",
     "api",
