@@ -27,4 +27,16 @@ var_dump($company->getNumberReviews());
 ```
 
 ### Example outputs
-> TODO: Add example output
+
+#### Company output
+```php
+var_dump($kiyoh->getCompany());
+```
+![KiyOh Company PHP Dump](docs/company_dump.png)
+
+
+#### Review output
+```php
+var_dump($kiyoh->getCompany()->getReviews()[0]);
+```
+![KiyOh Company PHP Dump](docs/review_dump.png)
