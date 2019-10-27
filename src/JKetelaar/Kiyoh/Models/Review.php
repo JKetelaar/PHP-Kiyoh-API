@@ -5,239 +5,175 @@
 
 namespace JKetelaar\Kiyoh\Models;
 
+
 class Review
 {
     /**
-     * @var int
+     * @var string
      */
     private $id;
 
     /**
-     * @var Customer
+     * @var string
      */
-    private $customer;
+    private $author;
+
+    /**
+     * @var string
+     */
+    private $city;
+
+    /**
+     * @var float
+     */
+    private $rating;
+
+    /**
+     * @var ReviewContent[]
+     */
+    private $content;
 
     /**
      * @var \DateTime
      */
-    private $date;
+    private $dateSince;
 
     /**
-     * @var int
+     * @var \DateTime
      */
-    private $totalScore;
-
-    /**
-     * @var Question[]
-     */
-    private $questions;
-
-    /**
-     * @var boolean
-     */
-    private $recommended;
-
-    /**
-     * @var string
-     */
-    private $pros;
-
-    /**
-     * @var string
-     */
-    private $cons;
-
-    /**
-     * @var string
-     */
-    private $purchase;
-
-    /**
-     * @var string
-     */
-    private $reaction;
+    private $updatedSince;
 
     /**
      * Review constructor.
-     *
-     * @param int        $id
-     * @param Customer   $customer
-     * @param \DateTime  $date
-     * @param int        $totalScore
-     * @param Question[] $questions
-     * @param bool       $recommended
-     * @param string     $pros
-     * @param string     $cons
-     * @param string     $purchase
-     * @param string     $reaction
+     * @param string $id
+     * @param string $author
+     * @param string $city
+     * @param float $rating
+     * @param string $dateSince
+     * @param string $updatedSince
      */
-    public function __construct(
-        $id,
-        Customer $customer,
-        \DateTime $date,
-        $totalScore,
-        array $questions,
-        $recommended,
-        $pros = null,
-        $cons = null,
-        $purchase = null,
-        $reaction = null
-    ) {
+    public function __construct(string $id, string $author, string $city, float $rating, string $dateSince, string $updatedSince)
+    {
         $this->id = $id;
-        $this->customer = $customer;
-        $this->date = $date;
-        $this->totalScore = $totalScore;
-        $this->questions = $questions;
-        $this->recommended = $recommended;
-        $this->pros = $pros;
-        $this->cons = $cons;
-        $this->purchase = $purchase;
-        $this->reaction = $reaction;
+        $this->author = $author;
+        $this->city = $city;
+        $this->rating = $rating;
+        try {
+            $this->dateSince = new \DateTime($dateSince);
+            $this->updatedSince = new \DateTime($updatedSince);
+        } catch (\Exception $e) {
+        }
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @return Customer
+     * @param string $id
      */
-    public function getCustomer()
+    public function setId(string $id): void
     {
-        return $this->customer;
+        $this->id = $id;
     }
 
     /**
-     * @param Customer $customer
+     * @return string
      */
-    public function setCustomer($customer)
+    public function getAuthor(): string
     {
-        $this->customer = $customer;
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor(string $author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city): void
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return float
+     */
+    public function getRating(): float
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param float $rating
+     */
+    public function setRating(float $rating): void
+    {
+        $this->rating = $rating;
+    }
+
+    /**
+     * @return ReviewContent[]
+     */
+    public function getContent(): array
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param ReviewContent[] $content
+     */
+    public function setContent(array $content): void
+    {
+        $this->content = $content;
     }
 
     /**
      * @return \DateTime
      */
-    public function getDate()
+    public function getDateSince(): \DateTime
     {
-        return $this->date;
+        return $this->dateSince;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTime $dateSince
      */
-    public function setDate($date)
+    public function setDateSince(\DateTime $dateSince): void
     {
-        $this->date = $date;
+        $this->dateSince = $dateSince;
     }
 
     /**
-     * @return int
+     * @return \DateTime
      */
-    public function getTotalScore()
+    public function getUpdatedSince(): \DateTime
     {
-        return $this->totalScore;
+        return $this->updatedSince;
     }
 
     /**
-     * @param int $totalScore
+     * @param \DateTime $updatedSince
      */
-    public function setTotalScore($totalScore)
+    public function setUpdatedSince(\DateTime $updatedSince): void
     {
-        $this->totalScore = $totalScore;
-    }
-
-    use GetQuestionsTrait;
-
-    /**
-     * @param Question[] $questions
-     */
-    public function setQuestions($questions)
-    {
-        $this->questions = $questions;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isRecommended()
-    {
-        return $this->recommended;
-    }
-
-    /**
-     * @param bool $recommended
-     */
-    public function setRecommended($recommended)
-    {
-        $this->recommended = $recommended;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPros()
-    {
-        return $this->pros;
-    }
-
-    /**
-     * @param string $pros
-     */
-    public function setPros($pros)
-    {
-        $this->pros = $pros;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCons()
-    {
-        return $this->cons;
-    }
-
-    /**
-     * @param string $cons
-     */
-    public function setCons($cons)
-    {
-        $this->cons = $cons;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPurchase()
-    {
-        return $this->purchase;
-    }
-
-    /**
-     * @param string $purchase
-     */
-    public function setPurchase($purchase)
-    {
-        $this->purchase = $purchase;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReaction()
-    {
-        return $this->reaction;
-    }
-
-    /**
-     * @param string $reaction
-     */
-    public function setReaction($reaction)
-    {
-        $this->reaction = $reaction;
+        $this->updatedSince = $updatedSince;
     }
 }
