@@ -6,11 +6,6 @@
       "name": "JKetelaar",
       "email": "jeroen@ketelaar.me",
       "homepage": "http://jketelaar.nl/"
-    },
-    {
-      "name": "Elwin Dokter",
-      "email": "elwin@reprovinci.nl",
-      "homepage": "https://lwin.nl"
     }
   ],
   "description": "Allows you to interact with Kiyoh using PHP",
