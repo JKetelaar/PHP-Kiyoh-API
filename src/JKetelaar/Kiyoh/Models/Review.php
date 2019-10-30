@@ -146,6 +146,35 @@ class Review
     }
 
     /**
+     * @return ReviewContent
+     */
+    public function getContentItem( string $groupName ): ?\JKetelaar\Kiyoh\Models\ReviewContent
+    {
+        $foundContentItem = null;
+		foreach ( $this->content as $contentItem ) {
+			if ( $contentItem->getGroup() === $groupName ) {
+				$foundContentItem = $contentItem;
+				break;
+			}
+		}
+		return $foundContentItem;
+    }
+
+    /**
+     * @param string $groupName
+     * @param ReviewContent $reviewContent
+     */
+    public function setContentItem( string $groupName, \JKetelaar\Kiyoh\Models\ReviewContent $reviewContent ): void
+    {
+		foreach ( $this->content as $contentItemIndex => $contentItem ) {
+			if ( $contentItem->getGroup() === $groupName ) {
+				$this->content[$contentItemIndex] = $reviewContent;
+				break;
+			}
+		}
+    }
+
+    /**
      * @return \DateTime
      */
     public function getDateSince(): \DateTime
