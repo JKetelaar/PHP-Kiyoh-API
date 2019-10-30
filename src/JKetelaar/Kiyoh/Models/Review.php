@@ -151,13 +151,13 @@ class Review
     public function getContentItem( string $groupName ): ?\JKetelaar\Kiyoh\Models\ReviewContent
     {
         $foundContentItem = null;
-		foreach ( $this->content as $contentItem ) {
-			if ( $contentItem->getGroup() === $groupName ) {
-				$foundContentItem = $contentItem;
-				break;
-			}
-		}
-		return $foundContentItem;
+        foreach ( $this->content as $contentItem ) {
+            if ( $contentItem->getGroup() === $groupName ) {
+                $foundContentItem = $contentItem;
+                break;
+            }
+        }
+        return $foundContentItem;
     }
 
     /**
@@ -166,12 +166,12 @@ class Review
      */
     public function setContentItem( string $groupName, \JKetelaar\Kiyoh\Models\ReviewContent $reviewContent ): void
     {
-		foreach ( $this->content as $contentItemIndex => $contentItem ) {
-			if ( $contentItem->getGroup() === $groupName ) {
-				$this->content[$contentItemIndex] = $reviewContent;
-				break;
-			}
-		}
+        foreach ( $this->content as $contentItemIndex => $contentItem ) {
+            if ( $contentItem->getGroup() === $groupName ) {
+                $this->content[$contentItemIndex] = $reviewContent;
+                break;
+            }
+        }
     }
 
     /**
