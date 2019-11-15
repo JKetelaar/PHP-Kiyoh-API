@@ -47,10 +47,11 @@ class ReviewFactory
         $author = $element->reviewAuthor;
         $city = $element->city;
         $rating = $element->rating;
+        $comments = ( $element->reviewComments ? : '' );
         $dateSince = $element->dateSince;
         $updatedSince = $element->updatedSince;
 
-        $review = new Review($id, $author, $city, (float)$rating, $dateSince, $updatedSince);
+        $review = new Review($id, $author, $city, (float)$rating, $comments, $dateSince, $updatedSince);
         $review->setContent(self::createReviewContent($element->reviewContent->reviewContent));
 
         return $review;
