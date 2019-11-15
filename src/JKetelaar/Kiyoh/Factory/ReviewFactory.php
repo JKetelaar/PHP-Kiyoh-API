@@ -47,7 +47,7 @@ class ReviewFactory
         $author = $element->reviewAuthor;
         $city = $element->city;
         $rating = $element->rating;
-        $comments = ( $element->reviewComments ? : '' );
+        $comments = ( isset( $element->reviewComments ) ? $element->reviewComments : '' );
         $dateSince = $element->dateSince;
         $updatedSince = $element->updatedSince;
 
