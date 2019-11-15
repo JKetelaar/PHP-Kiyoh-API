@@ -52,12 +52,13 @@ class Review
      * @param string $dateSince
      * @param string $updatedSince
      */
-    public function __construct(string $id, string $author, string $city, float $rating, string $dateSince, string $updatedSince)
+    public function __construct(string $id, string $author, string $city, float $rating, string $comments, string $dateSince, string $updatedSince)
     {
         $this->id = $id;
         $this->author = $author;
         $this->city = $city;
         $this->rating = $rating;
+        $this->comments = $comments;
         try {
             $this->dateSince = new \DateTime($dateSince);
             $this->updatedSince = new \DateTime($updatedSince);
@@ -204,5 +205,21 @@ class Review
     public function setUpdatedSince(\DateTime $updatedSince): void
     {
         $this->updatedSince = $updatedSince;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComments(): string
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param string $comments
+     */
+    public function setComments(string $comments): void
+    {
+        $this->comments = $comments;
     }
 }
