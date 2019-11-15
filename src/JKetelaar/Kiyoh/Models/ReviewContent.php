@@ -18,7 +18,7 @@ class ReviewContent
     private $type;
 
     /**
-     * @var float
+     * @var string
      */
     private $rating;
 

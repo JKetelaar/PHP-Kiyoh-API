@@ -29,6 +29,11 @@ class Review
     private $rating;
 
     /**
+     * @var string
+     */
+    private $comments;
+
+    /**
      * @var ReviewContent[]
      */
     private $content;
@@ -49,6 +54,7 @@ class Review
      * @param string $author
      * @param string $city
      * @param float $rating
+     * @param string $comments
      * @param string $dateSince
      * @param string $updatedSince
      */
@@ -131,6 +137,22 @@ class Review
     }
 
     /**
+     * @return string
+     */
+    public function getComments(): string
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param string $comments
+     */
+    public function setComments(string $comments): void
+    {
+        $this->comments = $comments;
+    }
+
+    /**
      * @return ReviewContent[]
      */
     public function getContent(): array
@@ -205,21 +227,5 @@ class Review
     public function setUpdatedSince(\DateTime $updatedSince): void
     {
         $this->updatedSince = $updatedSince;
-    }
-
-    /**
-     * @return string
-     */
-    public function getComments(): string
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param string $comments
-     */
-    public function setComments(string $comments): void
-    {
-        $this->comments = $comments;
     }
 }
