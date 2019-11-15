@@ -82,18 +82,45 @@ class ReviewContent
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getRating(): float
+    public function getRating()
     {
-        return $this->rating;
+        $rating = $this->rating;
+        switch ($this->getType()) {
+            case 'INT':
+                $rating = intval($rating);
+                break;
+            case 'BOOLEAN':
+                if ($rating === 'true') {
+                    $rating = true;
+                } else if ($rating === 'false') {
+                    $rating = false;
+                } else {
+                    $rating = boolval($rating);
+                }
+                break;
+        }
+        return $rating;
     }
 
     /**
-     * @param float $rating
+     * @param mixed $rating
      */
-    public function setRating(float $rating): void
+    public function setRating($rating): void
     {
+        switch ($this->getType()) {
+            case 'BOOLEAN':
+                if(is_bool($rating)) {
+                    $rating = ( $rating ? 'true' : 'false' );
+                } else {
+                    $rating = strval($rating);
+                }
+                break;
+            default:
+                $rating = strval($rating);
+                break;
+        }
         $this->rating = $rating;
     }
 
