@@ -67,7 +67,7 @@ class ReviewFactory
             $order = $element->order;
             $translation = $element->questionTranslation;
 
-            $content[] = new ReviewContent($group, $type, (float)$rating, (int)$order, $translation);
+            $content[] = new ReviewContent($group, $type, $rating, (int)$order, $translation);
         }
 
         return $content;

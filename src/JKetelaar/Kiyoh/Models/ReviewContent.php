@@ -36,11 +36,11 @@ class ReviewContent
      * ReviewContent constructor.
      * @param string $group
      * @param string $type
-     * @param float $rating
+     * @param string $rating
      * @param int $order
      * @param string $translation
      */
-    public function __construct(string $group, string $type, float $rating, int $order, string $translation)
+    public function __construct(string $group, string $type, string $rating, int $order, string $translation)
     {
         $this->group = $group;
         $this->type = $type;
@@ -99,6 +99,9 @@ class ReviewContent
                 } else {
                     $rating = boolval($rating);
                 }
+                break;
+            default:
+                $rating = strval($rating);
                 break;
         }
         return $rating;
