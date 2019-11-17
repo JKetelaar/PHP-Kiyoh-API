@@ -92,13 +92,7 @@ class ReviewContent
                 $rating = intval($rating);
                 break;
             case 'BOOLEAN':
-                if ($rating === 'true') {
-                    $rating = true;
-                } else if ($rating === 'false') {
-                    $rating = false;
-                } else {
-                    $rating = boolval($rating);
-                }
+                $rating = filter_var($rating, FILTER_VALIDATE_BOOLEAN);
                 break;
             default:
                 $rating = strval($rating);
