@@ -31,7 +31,7 @@ class Review
     /**
      * @var string
      */
-    private $comments;
+    private $comment;
 
     /**
      * @var ReviewContent[]
@@ -58,13 +58,13 @@ class Review
      * @param string $dateSince
      * @param string $updatedSince
      */
-    public function __construct(string $id, string $author, string $city, float $rating, string $comments, string $dateSince, string $updatedSince)
+    public function __construct(string $id, string $author, string $city, float $rating, string $comment, string $dateSince, string $updatedSince)
     {
         $this->id = $id;
         $this->author = $author;
         $this->city = $city;
         $this->rating = $rating;
-        $this->comments = $comments;
+        $this->comment = $comment;
         try {
             $this->dateSince = new \DateTime($dateSince);
             $this->updatedSince = new \DateTime($updatedSince);
@@ -139,17 +139,17 @@ class Review
     /**
      * @return string
      */
-    public function getComments(): string
+    public function getComment(): string
     {
-        return $this->comments;
+        return $this->comment;
     }
 
     /**
      * @param string $comments
      */
-    public function setComments(string $comments): void
+    public function setComment(string $comment): void
     {
-        $this->comments = $comments;
+        $this->comment = $comment;
     }
 
     /**
