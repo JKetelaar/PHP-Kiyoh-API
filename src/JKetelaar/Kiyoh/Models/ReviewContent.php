@@ -34,19 +34,20 @@ class ReviewContent
 
     /**
      * ReviewContent constructor.
+     *
      * @param string $group
      * @param string $type
-     * @param float $rating
-     * @param int $order
+     * @param float  $rating
+     * @param int    $order
      * @param string $translation
      */
     public function __construct(string $group, string $type, float $rating, int $order, string $translation)
     {
-        $this->group = $group;
-        $this->type = $type;
-        $this->rating = $rating;
-        $this->order = $order;
-        $this->translation = $translation;
+        $this->group        = $group;
+        $this->type         = $type;
+        $this->rating       = $rating;
+        $this->order        = $order;
+        $this->translation  = $translation;
     }
 
     /**
@@ -59,10 +60,14 @@ class ReviewContent
 
     /**
      * @param string $group
+     *
+     * @return ReviewContent
      */
-    public function setGroup(string $group): void
+    public function setGroup(string $group): self
     {
         $this->group = $group;
+
+        return $this;
     }
 
     /**
@@ -75,10 +80,14 @@ class ReviewContent
 
     /**
      * @param string $type
+     *
+     * @return ReviewContent
      */
-    public function setType(string $type): void
+    public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -91,10 +100,14 @@ class ReviewContent
 
     /**
      * @param float $rating
+     *
+     * @return ReviewContent
      */
-    public function setRating(float $rating): void
+    public function setRating(float $rating): self
     {
         $this->rating = $rating;
+
+        return $this;
     }
 
     /**
@@ -107,10 +120,14 @@ class ReviewContent
 
     /**
      * @param int $order
+     *
+     * @return ReviewContent
      */
-    public function setOrder(int $order): void
+    public function setOrder(int $order): self
     {
         $this->order = $order;
+
+        return $this;
     }
 
     /**
@@ -123,9 +140,13 @@ class ReviewContent
 
     /**
      * @param string $translation
+     *
+     * @return ReviewContent
      */
-    public function setTranslation(string $translation): void
+    public function setTranslation(string $translation): self
     {
         $this->translation = $translation;
+
+        return $this;
     }
 }

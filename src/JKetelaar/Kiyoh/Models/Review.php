@@ -5,6 +5,8 @@
 
 namespace JKetelaar\Kiyoh\Models;
 
+use DateTime;
+use Exception;
 
 class Review
 {
@@ -34,34 +36,44 @@ class Review
     private $content;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $dateSince;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $updatedSince;
 
     /**
      * Review constructor.
+     *
      * @param string $id
      * @param string $author
      * @param string $city
-     * @param float $rating
+     * @param float  $rating
      * @param string $dateSince
      * @param string $updatedSince
      */
-    public function __construct(string $id, string $author, string $city, float $rating, string $dateSince, string $updatedSince)
+    public function __construct(
+        string $id,
+        string $author,
+        string $city,
+        float  $rating,
+        string $dateSince,
+        string $updatedSince
+    )
     {
-        $this->id = $id;
-        $this->author = $author;
-        $this->city = $city;
-        $this->rating = $rating;
+        $this->id       = $id;
+        $this->author   = $author;
+        $this->city     = $city;
+        $this->rating   = $rating;
+
         try {
-            $this->dateSince = new \DateTime($dateSince);
-            $this->updatedSince = new \DateTime($updatedSince);
-        } catch (\Exception $e) {
+            $this->dateSince    = new DateTime($dateSince);
+            $this->updatedSince = new DateTime($updatedSince);
+        } catch (Exception $e) {
+            // Unhandled exception.
         }
     }
 
@@ -75,10 +87,14 @@ class Review
 
     /**
      * @param string $id
+     *
+     * @return Review
      */
-    public function setId(string $id): void
+    public function setId(string $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -91,10 +107,14 @@ class Review
 
     /**
      * @param string $author
+     *
+     * @return Review
      */
-    public function setAuthor(string $author): void
+    public function setAuthor(string $author): self
     {
         $this->author = $author;
+
+        return $this;
     }
 
     /**
@@ -107,10 +127,14 @@ class Review
 
     /**
      * @param string $city
+     *
+     * @return Review
      */
-    public function setCity(string $city): void
+    public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
     }
 
     /**
@@ -123,10 +147,14 @@ class Review
 
     /**
      * @param float $rating
+     *
+     * @return Review
      */
-    public function setRating(float $rating): void
+    public function setRating(float $rating): self
     {
         $this->rating = $rating;
+
+        return $this;
     }
 
     /**
@@ -139,70 +167,90 @@ class Review
 
     /**
      * @param ReviewContent[] $content
+     *
+     * @return Review
      */
-    public function setContent(array $content): void
+    public function setContent(array $content): self
     {
         $this->content = $content;
+
+        return $this;
     }
 
     /**
-     * @return ReviewContent
+     * @param string $groupName
+     *
+     * @return ReviewContent|null
      */
-    public function getContentItem( string $groupName ): ?\JKetelaar\Kiyoh\Models\ReviewContent
+    public function getContentItem(string $groupName): ?\JKetelaar\Kiyoh\Models\ReviewContent
     {
         $foundContentItem = null;
+
         foreach ( $this->content as $contentItem ) {
             if ( $contentItem->getGroup() === $groupName ) {
                 $foundContentItem = $contentItem;
                 break;
             }
         }
+
         return $foundContentItem;
     }
 
     /**
-     * @param string $groupName
+     * @param string        $groupName
      * @param ReviewContent $reviewContent
+     *
+     * @return Review
      */
-    public function setContentItem( string $groupName, \JKetelaar\Kiyoh\Models\ReviewContent $reviewContent ): void
+    public function setContentItem(string $groupName, \JKetelaar\Kiyoh\Models\ReviewContent $reviewContent): self
     {
-        foreach ( $this->content as $contentItemIndex => $contentItem ) {
-            if ( $contentItem->getGroup() === $groupName ) {
+        foreach ($this->content as $contentItemIndex => $contentItem) {
+            if ($contentItem->getGroup() === $groupName ) {
                 $this->content[$contentItemIndex] = $reviewContent;
                 break;
             }
         }
+
+        return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDateSince(): \DateTime
+    public function getDateSince(): DateTime
     {
         return $this->dateSince;
     }
 
     /**
-     * @param \DateTime $dateSince
+     * @param DateTime $dateSince
+     *
+     * @return Review
      */
-    public function setDateSince(\DateTime $dateSince): void
+    public function setDateSince(DateTime $dateSince): self
     {
         $this->dateSince = $dateSince;
+
+        return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getUpdatedSince(): \DateTime
+    public function getUpdatedSince(): DateTime
     {
         return $this->updatedSince;
     }
 
     /**
-     * @param \DateTime $updatedSince
+     * @param DateTime $updatedSince
+     *
+     * @return Review
      */
-    public function setUpdatedSince(\DateTime $updatedSince): void
+    public function setUpdatedSince(DateTime $updatedSince): self
     {
         $this->updatedSince = $updatedSince;
+
+        return $this;
     }
 }
