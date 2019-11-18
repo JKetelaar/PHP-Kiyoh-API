@@ -18,7 +18,7 @@ class ReviewContent
     private $type;
 
     /**
-     * @var float
+     * @var string
      */
     private $rating;
 
@@ -36,11 +36,11 @@ class ReviewContent
      * ReviewContent constructor.
      * @param string $group
      * @param string $type
-     * @param float $rating
+     * @param string $rating
      * @param int $order
      * @param string $translation
      */
-    public function __construct(string $group, string $type, float $rating, int $order, string $translation)
+    public function __construct(string $group, string $type, string $rating, int $order, string $translation)
     {
         $this->group = $group;
         $this->type = $type;
@@ -82,18 +82,42 @@ class ReviewContent
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getRating(): float
+    public function getRating()
     {
-        return $this->rating;
+        $rating = $this->rating;
+        switch ($this->getType()) {
+            case 'INT':
+                $rating = intval($rating);
+                break;
+            case 'BOOLEAN':
+                $rating = filter_var($rating, FILTER_VALIDATE_BOOLEAN);
+                break;
+            default:
+                $rating = strval($rating);
+                break;
+        }
+        return $rating;
     }
 
     /**
-     * @param float $rating
+     * @param mixed $rating
      */
-    public function setRating(float $rating): void
+    public function setRating($rating): void
     {
+        switch ($this->getType()) {
+            case 'BOOLEAN':
+                if(is_bool($rating)) {
+                    $rating = ( $rating ? 'true' : 'false' );
+                } else {
+                    $rating = strval($rating);
+                }
+                break;
+            default:
+                $rating = strval($rating);
+                break;
+        }
         $this->rating = $rating;
     }
 

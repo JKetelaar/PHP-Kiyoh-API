@@ -47,10 +47,11 @@ class ReviewFactory
         $author = $element->reviewAuthor;
         $city = $element->city;
         $rating = $element->rating;
+        $comment = ( isset( $element->reviewComments ) ? $element->reviewComments : '' );
         $dateSince = $element->dateSince;
         $updatedSince = $element->updatedSince;
 
-        $review = new Review($id, $author, $city, (float)$rating, $dateSince, $updatedSince);
+        $review = new Review($id, $author, $city, (float)$rating, $comment, $dateSince, $updatedSince);
         $review->setContent(self::createReviewContent($element->reviewContent->reviewContent));
 
         return $review;
@@ -66,7 +67,7 @@ class ReviewFactory
             $order = $element->order;
             $translation = $element->questionTranslation;
 
-            $content[] = new ReviewContent($group, $type, (float)$rating, (int)$order, $translation);
+            $content[] = new ReviewContent($group, $type, $rating, (int)$order, $translation);
         }
 
         return $content;

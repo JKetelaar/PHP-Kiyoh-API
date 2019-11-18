@@ -29,6 +29,11 @@ class Review
     private $rating;
 
     /**
+     * @var string
+     */
+    private $comment;
+
+    /**
      * @var ReviewContent[]
      */
     private $content;
@@ -49,15 +54,17 @@ class Review
      * @param string $author
      * @param string $city
      * @param float $rating
+     * @param string $comments
      * @param string $dateSince
      * @param string $updatedSince
      */
-    public function __construct(string $id, string $author, string $city, float $rating, string $dateSince, string $updatedSince)
+    public function __construct(string $id, string $author, string $city, float $rating, string $comment, string $dateSince, string $updatedSince)
     {
         $this->id = $id;
         $this->author = $author;
         $this->city = $city;
         $this->rating = $rating;
+        $this->comment = $comment;
         try {
             $this->dateSince = new \DateTime($dateSince);
             $this->updatedSince = new \DateTime($updatedSince);
@@ -127,6 +134,24 @@ class Review
     public function setRating(float $rating): void
     {
         $this->rating = $rating;
+    }
+
+    /**
+     * Retreives the comment from the company to the review.
+     * @return string (multiline)
+     */
+    public function getComment(): string
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Sets the comment from the company to the review.
+     * @param string $comment (multiline)
+     */
+    public function setComment(string $comment): void
+    {
+        $this->comment = $comment;
     }
 
     /**
