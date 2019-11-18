@@ -137,6 +137,7 @@ class Review
     }
 
     /**
+     * Retreives the comment from the company to the review
      * @return string
      */
     public function getComment(): string
@@ -145,6 +146,7 @@ class Review
     }
 
     /**
+     * Sets the comment from the company to the review
      * @param string $comments
      */
     public function setComment(string $comment): void
