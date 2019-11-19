@@ -31,6 +31,11 @@ class Review
     private $rating;
 
     /**
+     * @var string
+     */
+    private $comment;
+
+    /**
      * @var ReviewContent[]
      */
     private $content;
@@ -52,6 +57,7 @@ class Review
      * @param string $author
      * @param string $city
      * @param float  $rating
+     * @param string $comment
      * @param string $dateSince
      * @param string $updatedSince
      */
@@ -59,18 +65,20 @@ class Review
         string $id,
         string $author,
         string $city,
-        float  $rating,
+        float $rating,
+        string $comment,
         string $dateSince,
         string $updatedSince
     )
     {
-        $this->id       = $id;
-        $this->author   = $author;
-        $this->city     = $city;
-        $this->rating   = $rating;
+        $this->id = $id;
+        $this->author = $author;
+        $this->city = $city;
+        $this->rating = $rating;
+        $this->comment = $comment;
 
         try {
-            $this->dateSince    = new DateTime($dateSince);
+            $this->dateSince = new DateTime($dateSince);
             $this->updatedSince = new DateTime($updatedSince);
         } catch (Exception $e) {
             // Unhandled exception.
@@ -158,6 +166,29 @@ class Review
     }
 
     /**
+     * Retrieves the comment from the company to the review.
+     *
+     * @return string (multiline)
+     */
+    public function getComment(): string
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Sets the comment from the company to the review.
+     * @param string $comment (multiline)
+     *
+     * @return Review
+     */
+    public function setComment(string $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
      * @return ReviewContent[]
      */
     public function getContent(): array
@@ -182,7 +213,7 @@ class Review
      *
      * @return ReviewContent|null
      */
-    public function getContentItem(string $groupName): ?\JKetelaar\Kiyoh\Models\ReviewContent
+    public function getContentItem(string $groupName): ?ReviewContent
     {
         $foundContentItem = null;
 
@@ -202,7 +233,7 @@ class Review
      *
      * @return Review
      */
-    public function setContentItem(string $groupName, \JKetelaar\Kiyoh\Models\ReviewContent $reviewContent): self
+    public function setContentItem(string $groupName, ReviewContent $reviewContent): self
     {
         foreach ($this->content as $contentItemIndex => $contentItem) {
             if ($contentItem->getGroup() === $groupName ) {

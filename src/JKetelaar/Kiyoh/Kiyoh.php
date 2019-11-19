@@ -35,9 +35,9 @@ class Kiyoh
      */
     public function __construct($connectorCode, $reviewCount = 10)
     {
-        $this->client           = new Client();
-        $this->connectorCode    = $connectorCode;
-        $this->reviewCount      = $reviewCount;
+        $this->client = new Client();
+        $this->connectorCode = $connectorCode;
+        $this->reviewCount = $reviewCount;
     }
 
     /**

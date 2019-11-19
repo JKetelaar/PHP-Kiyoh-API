@@ -18,7 +18,7 @@ class ReviewContent
     private $type;
 
     /**
-     * @var float
+     * @var string
      */
     private $rating;
 
@@ -37,17 +37,17 @@ class ReviewContent
      *
      * @param string $group
      * @param string $type
-     * @param float  $rating
+     * @param string $rating
      * @param int    $order
      * @param string $translation
      */
-    public function __construct(string $group, string $type, float $rating, int $order, string $translation)
+    public function __construct(string $group, string $type, string $rating, int $order, string $translation)
     {
-        $this->group        = $group;
-        $this->type         = $type;
-        $this->rating       = $rating;
-        $this->order        = $order;
-        $this->translation  = $translation;
+        $this->group = $group;
+        $this->type = $type;
+        $this->rating = $rating;
+        $this->order = $order;
+        $this->translation = $translation;
     }
 
     /**
@@ -91,24 +91,59 @@ class ReviewContent
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getRating(): float
+    public function getRating()
     {
-        return $this->rating;
+        $rating = $this->rating;
+        switch ($this->getType()) {
+            case 'INT':
+                $rating = intval($rating);
+                break;
+            case 'BOOLEAN':
+                $rating = filter_var($rating, FILTER_VALIDATE_BOOLEAN);
+                break;
+            default:
+                $rating = strval($rating);
+                break;
+        }
+        return $rating;
     }
 
     /**
-     * @param float $rating
+     * @param mixed $rating
      *
      * @return ReviewContent
      */
-    public function setRating(float $rating): self
+    public function setRating(string $rating): self
     {
+        switch ($this->getType()) {
+            case 'BOOLEAN':
+                $rating = $this->validateRating($rating);
+                break;
+            default:
+                $rating = strval($rating);
+                break;
+        }
         $this->rating = $rating;
 
         return $this;
     }
+
+    /**
+     * @param string $rating
+     *
+     * @return string
+     */
+    private function validateRating(string $rating): string
+    {
+        if (is_bool($rating)) {
+            return ($rating ? 'true' : 'false');
+        } else {
+            return strval($rating);
+        }
+    }
+
 
     /**
      * @return int

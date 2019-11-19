@@ -59,22 +59,22 @@ class Company
      * @param string $locationName
      */
     public function __construct(
-        float   $averageRating,
-        int     $numberReviews,
-        float   $last12MonthAverageRating,
-        int     $last12MonthNumberReviews,
-        int     $percentageRecommendation,
-        int     $locationId,
-        string  $locationName
+        float $averageRating,
+        int $numberReviews,
+        float $last12MonthAverageRating,
+        int $last12MonthNumberReviews,
+        int $percentageRecommendation,
+        int $locationId,
+        string $locationName
     )
     {
-        $this->averageRating            = $averageRating;
-        $this->numberReviews            = $numberReviews;
+        $this->averageRating = $averageRating;
+        $this->numberReviews = $numberReviews;
         $this->last12MonthAverageRating = $last12MonthAverageRating;
         $this->last12MonthNumberReviews = $last12MonthNumberReviews;
         $this->percentageRecommendation = $percentageRecommendation;
-        $this->locationId               = $locationId;
-        $this->locationName             = $locationName;
+        $this->locationId = $locationId;
+        $this->locationName = $locationName;
     }
 
     /**
