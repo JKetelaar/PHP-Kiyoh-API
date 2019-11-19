@@ -5,6 +5,12 @@ build:
         override:
           - 'true'
           - php-scrutinizer-run
+      tests:
+        override:
+          - php ./vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite scrutinizer
+
+filter:
+  excluded_paths: [tests/*]
 
 checks:
   php:
