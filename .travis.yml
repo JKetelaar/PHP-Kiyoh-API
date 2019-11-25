@@ -11,3 +11,4 @@ before_script:
 
 script:
     - vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover coverage.xml
+    - "vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix src/ --rules=@Symfony --rules='{\"phpdoc_to_param_type\": {\"scalar_types\": false}}' --allow-risky=yes"
