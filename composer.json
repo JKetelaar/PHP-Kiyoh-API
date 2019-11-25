@@ -30,5 +30,10 @@
         "psr-0": {
             "JKetelaar": "src/"
         }
+    },
+    "config": {
+        "platform": {
+            "php": "7.1"
+        }
     }
 }
