@@ -6,8 +6,8 @@
 namespace JKetelaar\Kiyoh;
 
 use GuzzleHttp\Client;
-use JKetelaar\Kiyoh\Models\Company;
-use JKetelaar\Kiyoh\Factories\ReviewFactory;
+use JKetelaar\Kiyoh\Factory\ReviewFactory;
+use JKetelaar\Kiyoh\Model\Company;
 
 class Kiyoh
 {
@@ -31,7 +31,7 @@ class Kiyoh
      * Kiyoh constructor.
      *
      * @param string $connectorCode
-     * @param mixed  $reviewCount Either a number of reviews to retrieve
+     * @param mixed $reviewCount Either a number of reviews to retrieve
      */
     public function __construct($connectorCode, $reviewCount = 10)
     {
@@ -53,7 +53,7 @@ class Kiyoh
     /**
      * @param string|null $content
      *
-     * @return Models\Company
+     * @return Model\Company
      */
     protected function parseData($content = null)
     {

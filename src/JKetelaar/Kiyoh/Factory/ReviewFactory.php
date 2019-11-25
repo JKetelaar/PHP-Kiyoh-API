@@ -3,20 +3,21 @@
  * @author JKetelaar
  */
 
-namespace JKetelaar\Kiyoh\Factories;
+namespace JKetelaar\Kiyoh\Factory;
 
-use JKetelaar\Kiyoh\Models\Review;
-use JKetelaar\Kiyoh\Models\Company;
-use JKetelaar\Kiyoh\Models\ReviewContent;
+use JKetelaar\Kiyoh\Model\Company;
+use JKetelaar\Kiyoh\Model\Review;
+use JKetelaar\Kiyoh\Model\ReviewContent;
+use SimpleXMLElement;
 
 class ReviewFactory
 {
     /**
-     * @param \SimpleXMLElement $element
+     * @param SimpleXMLElement $element
      *
      * @return Company
      */
-    public static function createCompany(\SimpleXMLElement $element)
+    public static function createCompany(SimpleXMLElement $element)
     {
         $averageRating = $element->averageRating;
         $numberReviews = $element->numberReviews;
@@ -27,12 +28,12 @@ class ReviewFactory
         $locationName = $element->locationName;
 
         $company = new Company(
-            (float) $averageRating,
-            (int) $numberReviews,
-            (float) $last12MonthAverageRating,
-            (int) $last12MonthNumberReviews,
-            (int) $percentageRecommendation,
-            (int) $locationId,
+            (float)$averageRating,
+            (int)$numberReviews,
+            (float)$last12MonthAverageRating,
+            (int)$last12MonthNumberReviews,
+            (int)$percentageRecommendation,
+            (int)$locationId,
             $locationName
         );
 
@@ -48,34 +49,34 @@ class ReviewFactory
     }
 
     /**
-     * @param \SimpleXMLElement $element
+     * @param SimpleXMLElement $element
      *
      * @return Review
      */
-    public static function createReview(\SimpleXMLElement $element)
+    public static function createReview(SimpleXMLElement $element)
     {
         $id = $element->reviewId;
         $author = $element->reviewAuthor;
         $city = $element->city;
         $rating = $element->rating;
-        $comment = (isset( $element->reviewComments ) ? $element->reviewComments : '');
+        $comment = (isset($element->reviewComments) ? $element->reviewComments : '');
         $dateSince = $element->dateSince;
         $updatedSince = $element->updatedSince;
 
         $content = self::createReviewContent($element->reviewContent->reviewContent);
 
-        $review = new Review($id, $author, $city, (float) $rating, $comment, $dateSince, $updatedSince);
+        $review = new Review($id, $author, $city, (float)$rating, $comment, $dateSince, $updatedSince);
         $review->setContent($content);
 
         return $review;
     }
 
     /**
-     * @param \SimpleXMLElement $elements
+     * @param SimpleXMLElement $elements
      *
      * @return array
      */
-    public static function createReviewContent(\SimpleXMLElement $elements)
+    public static function createReviewContent(SimpleXMLElement $elements)
     {
         $content = [];
 
@@ -86,7 +87,7 @@ class ReviewFactory
             $order = $element->order;
             $translation = $element->questionTranslation;
 
-            $content[] = new ReviewContent($group, $type, $rating, (int) $order, $translation);
+            $content[] = new ReviewContent($group, $type, $rating, (int)$order, $translation);
         }
 
         return $content;

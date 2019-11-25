@@ -3,7 +3,7 @@
  * @author JKetelaar
  */
 
-namespace JKetelaar\Kiyoh\Models;
+namespace JKetelaar\Kiyoh\Model;
 
 use DateTime;
 use Exception;
@@ -56,7 +56,7 @@ class Review
      * @param string $id
      * @param string $author
      * @param string $city
-     * @param float  $rating
+     * @param float $rating
      * @param string $comment
      * @param string $dateSince
      * @param string $updatedSince
@@ -69,8 +69,7 @@ class Review
         string $comment,
         string $dateSince,
         string $updatedSince
-    )
-    {
+    ) {
         $this->id = $id;
         $this->author = $author;
         $this->city = $city;
@@ -217,8 +216,8 @@ class Review
     {
         $foundContentItem = null;
 
-        foreach ( $this->content as $contentItem ) {
-            if ( $contentItem->getGroup() === $groupName ) {
+        foreach ($this->content as $contentItem) {
+            if ($contentItem->getGroup() === $groupName) {
                 $foundContentItem = $contentItem;
                 break;
             }
@@ -228,7 +227,7 @@ class Review
     }
 
     /**
-     * @param string        $groupName
+     * @param string $groupName
      * @param ReviewContent $reviewContent
      *
      * @return Review
@@ -236,7 +235,7 @@ class Review
     public function setContentItem(string $groupName, ReviewContent $reviewContent): self
     {
         foreach ($this->content as $contentItemIndex => $contentItem) {
-            if ($contentItem->getGroup() === $groupName ) {
+            if ($contentItem->getGroup() === $groupName) {
                 $this->content[$contentItemIndex] = $reviewContent;
                 break;
             }

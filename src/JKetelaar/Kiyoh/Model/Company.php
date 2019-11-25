@@ -3,7 +3,7 @@
  * @author JKetelaar
  */
 
-namespace JKetelaar\Kiyoh\Models;
+namespace JKetelaar\Kiyoh\Model;
 
 class Company
 {
@@ -50,12 +50,12 @@ class Company
     /**
      * Company constructor.
      *
-     * @param float  $averageRating
-     * @param int    $numberReviews
-     * @param float  $last12MonthAverageRating
-     * @param int    $last12MonthNumberReviews
-     * @param int    $percentageRecommendation
-     * @param int    $locationId
+     * @param float $averageRating
+     * @param int $numberReviews
+     * @param float $last12MonthAverageRating
+     * @param int $last12MonthNumberReviews
+     * @param int $percentageRecommendation
+     * @param int $locationId
      * @param string $locationName
      */
     public function __construct(
@@ -66,8 +66,7 @@ class Company
         int $percentageRecommendation,
         int $locationId,
         string $locationName
-    )
-    {
+    ) {
         $this->averageRating = $averageRating;
         $this->numberReviews = $numberReviews;
         $this->last12MonthAverageRating = $last12MonthAverageRating;

@@ -3,7 +3,7 @@
  * @author JKetelaar
  */
 
-namespace JKetelaar\Kiyoh\Models;
+namespace JKetelaar\Kiyoh\Model;
 
 class ReviewContent
 {
@@ -38,7 +38,7 @@ class ReviewContent
      * @param string $group
      * @param string $type
      * @param string $rating
-     * @param int    $order
+     * @param int $order
      * @param string $translation
      */
     public function __construct(string $group, string $type, string $rating, int $order, string $translation)
@@ -71,26 +71,6 @@ class ReviewContent
     }
 
     /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return ReviewContent
-     */
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getRating()
@@ -107,6 +87,7 @@ class ReviewContent
                 $rating = strval($rating);
                 break;
         }
+
         return $rating;
     }
 
@@ -126,6 +107,26 @@ class ReviewContent
                 break;
         }
         $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return ReviewContent
+     */
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
