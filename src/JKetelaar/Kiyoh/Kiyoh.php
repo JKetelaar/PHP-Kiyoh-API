@@ -1,17 +1,16 @@
 <?php
+/**
+ * @author JKetelaar
+ */
 
 namespace JKetelaar\Kiyoh;
 
 use GuzzleHttp\Client;
-use JKetelaar\Kiyoh\Factory\ReviewFactory;
 use JKetelaar\Kiyoh\Models\Company;
+use JKetelaar\Kiyoh\Factories\ReviewFactory;
 
-/**
- * @author JKetelaar
- */
 class Kiyoh
 {
-
     const COMPANY_REVIEWS_URL = 'https://www.kiyoh.com/v1/review/feed.xml?hash=%s&limit=%s';
 
     /**
@@ -32,13 +31,13 @@ class Kiyoh
      * Kiyoh constructor.
      *
      * @param string $connectorCode
-     * @param mixed $reviewCount Either a number of reviews to retrieve
+     * @param mixed  $reviewCount Either a number of reviews to retrieve
      */
     public function __construct($connectorCode, $reviewCount = 10)
     {
+        $this->client = new Client();
         $this->connectorCode = $connectorCode;
         $this->reviewCount = $reviewCount;
-        $this->client = new Client();
     }
 
     /**
@@ -72,13 +71,7 @@ class Kiyoh
      */
     public function getContent()
     {
-        return
-            $this->getClient()->request(
-                'GET',
-                $this->getCompanyURL()
-            )
-                ->getBody()
-                ->getContents();
+        return $this->getClient()->request('GET', $this->getCompanyURL())->getBody()->getContents();
     }
 
     /**
@@ -96,10 +89,6 @@ class Kiyoh
      */
     public function getCompanyURL()
     {
-        return sprintf(
-            self::COMPANY_REVIEWS_URL,
-            $this->connectorCode,
-            $this->reviewCount
-        );
+        return sprintf(self::COMPANY_REVIEWS_URL, $this->connectorCode, $this->reviewCount);
     }
 }

@@ -5,7 +5,6 @@
 
 namespace JKetelaar\Kiyoh\Models;
 
-
 class Company
 {
     /**
@@ -50,15 +49,24 @@ class Company
 
     /**
      * Company constructor.
-     * @param float $averageRating
-     * @param int $numberReviews
-     * @param float $last12MonthAverageRating
-     * @param int $last12MonthNumberReviews
-     * @param int $percentageRecommendation
-     * @param int $locationId
+     *
+     * @param float  $averageRating
+     * @param int    $numberReviews
+     * @param float  $last12MonthAverageRating
+     * @param int    $last12MonthNumberReviews
+     * @param int    $percentageRecommendation
+     * @param int    $locationId
      * @param string $locationName
      */
-    public function __construct(float $averageRating, int $numberReviews, float $last12MonthAverageRating, int $last12MonthNumberReviews, int $percentageRecommendation, int $locationId, string $locationName)
+    public function __construct(
+        float $averageRating,
+        int $numberReviews,
+        float $last12MonthAverageRating,
+        int $last12MonthNumberReviews,
+        int $percentageRecommendation,
+        int $locationId,
+        string $locationName
+    )
     {
         $this->averageRating = $averageRating;
         $this->numberReviews = $numberReviews;
@@ -79,10 +87,14 @@ class Company
 
     /**
      * @param float $averageRating
+     *
+     * @return Company
      */
-    public function setAverageRating(float $averageRating): void
+    public function setAverageRating(float $averageRating): self
     {
         $this->averageRating = $averageRating;
+
+        return $this;
     }
 
     /**
@@ -95,10 +107,14 @@ class Company
 
     /**
      * @param int $numberReviews
+     *
+     * @return Company
      */
-    public function setNumberReviews(int $numberReviews): void
+    public function setNumberReviews(int $numberReviews): self
     {
         $this->numberReviews = $numberReviews;
+
+        return $this;
     }
 
     /**
@@ -111,10 +127,14 @@ class Company
 
     /**
      * @param float $last12MonthAverageRating
+     *
+     * @return Company
      */
-    public function setLast12MonthAverageRating(float $last12MonthAverageRating): void
+    public function setLast12MonthAverageRating(float $last12MonthAverageRating): self
     {
         $this->last12MonthAverageRating = $last12MonthAverageRating;
+
+        return $this;
     }
 
     /**
@@ -127,10 +147,14 @@ class Company
 
     /**
      * @param int $last12MonthNumberReviews
+     *
+     * @return Company
      */
-    public function setLast12MonthNumberReviews(int $last12MonthNumberReviews): void
+    public function setLast12MonthNumberReviews(int $last12MonthNumberReviews): self
     {
         $this->last12MonthNumberReviews = $last12MonthNumberReviews;
+
+        return $this;
     }
 
     /**
@@ -143,10 +167,14 @@ class Company
 
     /**
      * @param int $percentageRecommendation
+     *
+     * @return Company
      */
-    public function setPercentageRecommendation(int $percentageRecommendation): void
+    public function setPercentageRecommendation(int $percentageRecommendation): self
     {
         $this->percentageRecommendation = $percentageRecommendation;
+
+        return $this;
     }
 
     /**
@@ -159,10 +187,14 @@ class Company
 
     /**
      * @param int $locationId
+     *
+     * @return Company
      */
-    public function setLocationId(int $locationId): void
+    public function setLocationId(int $locationId): self
     {
         $this->locationId = $locationId;
+
+        return $this;
     }
 
     /**
@@ -175,10 +207,14 @@ class Company
 
     /**
      * @param string $locationName
+     *
+     * @return Company
      */
-    public function setLocationName(string $locationName): void
+    public function setLocationName(string $locationName): self
     {
         $this->locationName = $locationName;
+
+        return $this;
     }
 
     /**
@@ -191,10 +227,14 @@ class Company
 
     /**
      * @param Review[] $reviews
+     *
+     * @return Company
      */
-    public function setReviews(array $reviews): void
+    public function setReviews(array $reviews): self
     {
         $this->reviews = $reviews;
+
+        return $this;
     }
 
 }
