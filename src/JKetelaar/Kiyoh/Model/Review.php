@@ -56,7 +56,7 @@ class Review
      * @param string $id
      * @param string $author
      * @param string $city
-     * @param float $rating
+     * @param float  $rating
      * @param string $comment
      * @param string $dateSince
      * @param string $updatedSince
@@ -176,6 +176,7 @@ class Review
 
     /**
      * Sets the comment from the company to the review.
+     *
      * @param string $comment (multiline)
      *
      * @return Review
@@ -227,7 +228,7 @@ class Review
     }
 
     /**
-     * @param string $groupName
+     * @param string        $groupName
      * @param ReviewContent $reviewContent
      *
      * @return Review

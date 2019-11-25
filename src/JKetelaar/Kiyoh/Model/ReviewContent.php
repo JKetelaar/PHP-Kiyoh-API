@@ -38,7 +38,7 @@ class ReviewContent
      * @param string $group
      * @param string $type
      * @param string $rating
-     * @param int $order
+     * @param int    $order
      * @param string $translation
      */
     public function __construct(string $group, string $type, string $rating, int $order, string $translation)
@@ -139,12 +139,11 @@ class ReviewContent
     private function validateRating(string $rating): string
     {
         if (is_bool($rating)) {
-            return ($rating ? 'true' : 'false');
+            return $rating ? 'true' : 'false';
         } else {
             return strval($rating);
         }
     }
-
 
     /**
      * @return int

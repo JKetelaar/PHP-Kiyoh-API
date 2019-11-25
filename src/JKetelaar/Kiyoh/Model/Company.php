@@ -50,12 +50,12 @@ class Company
     /**
      * Company constructor.
      *
-     * @param float $averageRating
-     * @param int $numberReviews
-     * @param float $last12MonthAverageRating
-     * @param int $last12MonthNumberReviews
-     * @param int $percentageRecommendation
-     * @param int $locationId
+     * @param float  $averageRating
+     * @param int    $numberReviews
+     * @param float  $last12MonthAverageRating
+     * @param int    $last12MonthNumberReviews
+     * @param int    $percentageRecommendation
+     * @param int    $locationId
      * @param string $locationName
      */
     public function __construct(
@@ -235,5 +235,4 @@ class Company
 
         return $this;
     }
-
 }

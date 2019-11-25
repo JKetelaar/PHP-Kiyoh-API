@@ -17,7 +17,7 @@ class ReviewFactory
      *
      * @return Company
      */
-    public static function createCompany(SimpleXMLElement $element)
+    public static function createCompany(SimpleXMLElement $element): Company
     {
         $averageRating = $element->averageRating;
         $numberReviews = $element->numberReviews;
@@ -28,12 +28,12 @@ class ReviewFactory
         $locationName = $element->locationName;
 
         $company = new Company(
-            (float)$averageRating,
-            (int)$numberReviews,
-            (float)$last12MonthAverageRating,
-            (int)$last12MonthNumberReviews,
-            (int)$percentageRecommendation,
-            (int)$locationId,
+            (float) $averageRating,
+            (int) $numberReviews,
+            (float) $last12MonthAverageRating,
+            (int) $last12MonthNumberReviews,
+            (int) $percentageRecommendation,
+            (int) $locationId,
             $locationName
         );
 
@@ -53,7 +53,7 @@ class ReviewFactory
      *
      * @return Review
      */
-    public static function createReview(SimpleXMLElement $element)
+    public static function createReview(SimpleXMLElement $element): Review
     {
         $id = $element->reviewId;
         $author = $element->reviewAuthor;
@@ -65,7 +65,7 @@ class ReviewFactory
 
         $content = self::createReviewContent($element->reviewContent->reviewContent);
 
-        $review = new Review($id, $author, $city, (float)$rating, $comment, $dateSince, $updatedSince);
+        $review = new Review($id, $author, $city, (float) $rating, $comment, $dateSince, $updatedSince);
         $review->setContent($content);
 
         return $review;
@@ -76,7 +76,7 @@ class ReviewFactory
      *
      * @return array
      */
-    public static function createReviewContent(SimpleXMLElement $elements)
+    public static function createReviewContent(SimpleXMLElement $elements): array
     {
         $content = [];
 
@@ -87,7 +87,7 @@ class ReviewFactory
             $order = $element->order;
             $translation = $element->questionTranslation;
 
-            $content[] = new ReviewContent($group, $type, $rating, (int)$order, $translation);
+            $content[] = new ReviewContent($group, $type, $rating, (int) $order, $translation);
         }
 
         return $content;

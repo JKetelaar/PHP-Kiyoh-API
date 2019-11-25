@@ -31,7 +31,7 @@ class Kiyoh
      * Kiyoh constructor.
      *
      * @param string $connectorCode
-     * @param int $reviewCount Either a number of reviews to retrieve
+     * @param int    $reviewCount   Either a number of reviews to retrieve
      */
     public function __construct(string $connectorCode, int $reviewCount = 10)
     {
@@ -41,11 +41,11 @@ class Kiyoh
     }
 
     /**
-     * Gets the 10 latest reviews
+     * Gets the 10 latest reviews.
      *
      * @return Company
      */
-    public function getCompany()
+    public function getCompany(): Company
     {
         return $this->parseData($this->getContent());
     }
@@ -55,7 +55,7 @@ class Kiyoh
      *
      * @return Model\Company
      */
-    protected function parseData(?string $content = null)
+    protected function parseData(?string $content = null): Model\Company
     {
         if ($content === null) {
             $content = $this->getContent();
@@ -69,7 +69,7 @@ class Kiyoh
     /**
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->getClient()->request('GET', $this->getCompanyURL())->getBody()->getContents();
     }
@@ -77,17 +77,17 @@ class Kiyoh
     /**
      * @return Client
      */
-    public function getClient()
+    public function getClient(): Client
     {
         return $this->client;
     }
 
     /**
-     * Returns parsed Recent Company Reviews URL
+     * Returns parsed Recent Company Reviews URL.
      *
      * @return string
      */
-    public function getCompanyURL()
+    public function getCompanyURL(): string
     {
         return sprintf(self::COMPANY_REVIEWS_URL, $this->connectorCode, $this->reviewCount);
     }
