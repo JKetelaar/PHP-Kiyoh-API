@@ -12,3 +12,7 @@ before_script:
 script:
     - vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover coverage.xml
     - vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --config=.php-cs.php --using-cache=no --dry-run
+
+env:
+    global:
+        secure: nWD6R9kWU/+3tluKvez1ezffgmO0hQqxgAMo+fxD9KHinbD6nQ2XLEOlI0g9w4zzcX5+0wTQMjg+6TQ+MyR5hqS1pFZ9g9vRb9t3PnoGZw/tj7g24RdLEMMoTTHYf1dL7kluZ41ZrzmOAh4AzxcMQp7gVVxU+8kmyY474o4L6+Lbt83GJxQVi9qZxlj9Cm9gVQyl5dcUi2m/KL8jMkQMIBBacAGhx2MjEzzxwPzzViXF2n8rO2c7Yn33xO/8R1dtqRML4Y1IIx+Gd2usAHrPZUOG4FqVWIvTTpv+M17qnFog3eCAOJlzcHIUIKfuEeEG2sDv/uBFv/d+ZhaEGYDFsdGCsQoy7+XrJx/AslI80SbCDP7VhGMd9L+OA4REcRPyf5K4dl8q28bSL2ubt7Wd3ebcX/wdkM5O4dhqjTyduQCkosrJtEVVU5Lan+oSK9e4ySPKHD0CnImiziZJqII3miotlNpZYhLR3Nxe7l+J88CBwYVLHZF1vspx623xujNLnxFFAXyYQvrWQwFgYfTikPj3MtMAA7s4AM/tAtbjjIiqqvYJ4mPibe4NVoPCYksiPsnil2flFLdmacEmodKzJHQUJgjfAhM68J9zXbOQPKDmgUtYjPbZRkzV9RbCjE+jkQbigSW0O8ahFQms912jq2BZMDVz/RCyIg61bjvDvOM=
