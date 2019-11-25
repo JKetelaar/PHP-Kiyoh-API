@@ -31,9 +31,9 @@ class Kiyoh
      * Kiyoh constructor.
      *
      * @param string $connectorCode
-     * @param mixed $reviewCount Either a number of reviews to retrieve
+     * @param int $reviewCount Either a number of reviews to retrieve
      */
-    public function __construct($connectorCode, $reviewCount = 10)
+    public function __construct(string $connectorCode, int $reviewCount = 10)
     {
         $this->client = new Client();
         $this->connectorCode = $connectorCode;
@@ -55,7 +55,7 @@ class Kiyoh
      *
      * @return Model\Company
      */
-    protected function parseData($content = null)
+    protected function parseData(?string $content = null)
     {
         if ($content === null) {
             $content = $this->getContent();

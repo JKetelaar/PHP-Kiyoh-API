@@ -4,3 +4,5 @@
 /.idea
 /GUI
 .DS_Store
+
+.php_cs.cache
