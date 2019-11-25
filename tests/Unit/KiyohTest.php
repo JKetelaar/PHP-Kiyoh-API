@@ -16,6 +16,7 @@ final class KiyohTest extends TestCase
     public function testKiyoh()
     {
         $kiyohKey = getenv(self::KIYOH_KEY_ENV_KEY);
+        var_dump(getenv());
         $this->assertNotFalse($kiyohKey);
 
         $kiyoh = new Kiyoh($kiyohKey, self::REVIEW_COUNT);
