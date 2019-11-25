@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class KiyohTest extends TestCase
 {
-    public function testInit()
+    public function testKiyoh()
     {
         $kiyohKey = getenv('KIYOH_KEY');
         $this->assertNotFalse($kiyohKey);
