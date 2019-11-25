@@ -1,4 +1,5 @@
-# The perfect PHP Kiyoh API
+# A PHP Kiyoh API
+[![Build Status](https://travis-ci.com/JKetelaar/PHP-Kiyoh-API.svg?branch=master)](https://travis-ci.com/JKetelaar/PHP-Kiyoh-API)
 
 ## How to install?
 Install this project using composer: `composer require jketelaar/php-kiyoh-api`.
