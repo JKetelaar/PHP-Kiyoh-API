@@ -10,11 +10,12 @@ use PHPUnit\Framework\TestCase;
 
 final class KiyohTest extends TestCase
 {
+    const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
     const REVIEW_COUNT = 5;
 
     public function testKiyoh()
     {
-        $kiyohKey = getenv('KIYOH_KEY');
+        $kiyohKey = getenv(self::KIYOH_KEY_ENV_KEY);
         $this->assertNotFalse($kiyohKey);
 
         $kiyoh = new Kiyoh($kiyohKey, self::REVIEW_COUNT);
