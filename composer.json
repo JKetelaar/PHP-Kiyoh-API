@@ -1,34 +1,34 @@
 {
-  "name": "jketelaar/php-kiyoh-api",
-  "type": "library",
-  "authors": [
-    {
-      "name": "JKetelaar",
-      "email": "jeroen@ketelaar.me",
-      "homepage": "http://jketelaar.nl/"
+    "name": "jketelaar/php-kiyoh-api",
+    "type": "library",
+    "version": "2.0.2",
+    "authors": [
+        {
+            "name": "JKetelaar",
+            "email": "jeroen@ketelaar.me",
+            "homepage": "http://jketelaar.nl/"
+        }
+    ],
+    "description": "Allows you to interact with KiyOh using PHP",
+    "keywords": [
+        "kiyoh",
+        "api",
+        "php"
+    ],
+    "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
+    "license": "GPL-3.0+",
+    "require": {
+        "php": "~7.1",
+        "guzzlehttp/guzzle": "^6.2",
+        "ext-simplexml": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "7",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload": {
+        "psr-0": {
+            "JKetelaar": "src/"
+        }
     }
-  ],
-  "description": "Allows you to interact with KiyOh using PHP",
-  "keywords": [
-    "kiyoh",
-    "api",
-    "php"
-  ],
-  "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
-  "version": "2.0.1",
-  "license": "GPL-3.0+",
-  "require": {
-    "php": "~7.1",
-    "guzzlehttp/guzzle": "^6.2",
-    "ext-simplexml": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "7",
-    "friendsofphp/php-cs-fixer": "^2.16"
-  },
-  "autoload": {
-    "psr-0": {
-      "JKetelaar": "src/"
-    }
-  }
 }
