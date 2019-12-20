@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "JKetelaar",
+      "name": "Jeroen Ketelaar",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3681904?v=4",
+      "profile": "http://jketelaar.nl/",
+      "contributions": [
+        "maintenance",
+        "review",
+        "code",
+        "infra"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "PHP-Kiyoh-API",
+  "projectOwner": "JKetelaar",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
