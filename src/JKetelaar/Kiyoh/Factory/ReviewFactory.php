@@ -1,42 +1,42 @@
 <?php
+
+namespace JKetelaar\KiyOh\Factory;
+
+use SimpleXMLElement;
+use JKetelaar\KiyOh\Model\Review;
+use JKetelaar\KiyOh\Model\Company;
+use JKetelaar\KiyOh\Model\ReviewContent;
+
 /**
  * @author JKetelaar
+ *
+ * Class ReviewFactory.
+ *
+ * @package JKetelaar\KiyOh\Factory
  */
-
-namespace JKetelaar\Kiyoh\Factory;
-
-use JKetelaar\Kiyoh\Model\Company;
-use JKetelaar\Kiyoh\Model\Review;
-use JKetelaar\Kiyoh\Model\ReviewContent;
-use SimpleXMLElement;
-
 class ReviewFactory
 {
     /**
+     * Creating an instance of Company and passing the API results into the Company constructor.
+     *
      * @param SimpleXMLElement $element
      *
      * @return Company
      */
     public static function createCompany(SimpleXMLElement $element): Company
     {
-        $averageRating = $element->averageRating;
-        $numberReviews = $element->numberReviews;
-        $last12MonthAverageRating = $element->last12MonthAverageRating;
-        $last12MonthNumberReviews = $element->last12MonthNumberReviews;
-        $percentageRecommendation = $element->percentageRecommendation;
-        $locationId = $element->locationId;
-        $locationName = $element->locationName;
-
+        /** @var $company Company */
         $company = new Company(
-            (float) $averageRating,
-            (int) $numberReviews,
-            (float) $last12MonthAverageRating,
-            (int) $last12MonthNumberReviews,
-            (int) $percentageRecommendation,
-            (int) $locationId,
-            $locationName
+            (float) $element->averageRating,
+            (int) $element->numberReviews,
+            (float) $element->last12MonthAverageRating,
+            (int) $element->last12MonthNumberReviews,
+            (int) $element->percentageRecommendation,
+            (int) $element->locationId,
+            $element->locationNamee
         );
 
+        /** @var $reviews Review[] */
         $reviews = [];
 
         foreach ($element->reviews->reviews as $review) {
@@ -49,45 +49,52 @@ class ReviewFactory
     }
 
     /**
+     * Creating an instance of review based on the API results.
+     *
      * @param SimpleXMLElement $element
      *
      * @return Review
      */
     public static function createReview(SimpleXMLElement $element): Review
     {
-        $id = $element->reviewId;
-        $author = $element->reviewAuthor;
-        $city = $element->city;
-        $rating = $element->rating;
-        $comment = (isset($element->reviewComments) ? $element->reviewComments : '');
-        $dateSince = $element->dateSince;
-        $updatedSince = $element->updatedSince;
-
+        /** @var $reviews Review[] */
         $content = self::createReviewContent($element->reviewContent->reviewContent);
 
-        $review = new Review($id, $author, $city, (float) $rating, $comment, $dateSince, $updatedSince);
+        $review = (new Review(
+            $element->reviewId,
+            $element->reviewAuthor,
+            $element->city,
+            (float) $element->rating,
+            (isset($element->reviewComments) ? $element->reviewComments : ''),
+            $element->dateSince,
+            $element->updatedSince
+        ));
+
         $review->setContent($content);
 
         return $review;
     }
 
     /**
+     * Creating review content for each review instance based on the API results.
+     *
      * @param SimpleXMLElement $elements
      *
      * @return array
      */
     public static function createReviewContent(SimpleXMLElement $elements): array
     {
+        /** @var $content ReviewContent[] */
         $content = [];
 
         foreach ($elements as $element) {
-            $group = $element->questionGroup;
-            $type = $element->questionType;
-            $rating = $element->rating;
-            $order = $element->order;
-            $translation = $element->questionTranslation;
-
-            $content[] = new ReviewContent($group, $type, $rating, (int) $order, $translation);
+            $content[] = new ReviewContent(
+                $element->questionGroup,
+                $element->questionType,
+                $element->rating,
+                (int) $element->order,
+                $element->questionTranslation
+            );
         }
 
         return $content;

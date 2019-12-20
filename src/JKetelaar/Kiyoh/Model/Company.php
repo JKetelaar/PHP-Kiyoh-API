@@ -1,51 +1,55 @@
 <?php
+
+namespace JKetelaar\KiyOh\Model;
+
 /**
  * @author JKetelaar
+ *
+ * Class Company.
+ *
+ * @package JKetelaar\KiyOh\Model
  */
-
-namespace JKetelaar\Kiyoh\Model;
-
 class Company
 {
     /**
-     * @var float
+     * @var float $averageRating
      */
-    private $averageRating;
+    private float $averageRating;
 
     /**
-     * @var int
+     * @var int $numberReviews
      */
-    private $numberReviews;
+    private int $numberReviews;
 
     /**
-     * @var float
+     * @var float $last12MonthAverageRating
      */
-    private $last12MonthAverageRating;
+    private float $last12MonthAverageRating;
 
     /**
-     * @var int
+     * @var int $last12MonthNumberReviews
      */
-    private $last12MonthNumberReviews;
+    private int $last12MonthNumberReviews;
 
     /**
-     * @var int
+     * @var int $percentageRecommendation
      */
-    private $percentageRecommendation;
+    private int $percentageRecommendation;
 
     /**
-     * @var int
+     * @var int $locationId
      */
-    private $locationId;
+    private int $locationId;
 
     /**
-     * @var string
+     * @var string $locationName
      */
-    private $locationName;
+    private string $locationName;
 
     /**
      * @var Review[]
      */
-    private $reviews;
+    private array $reviews;
 
     /**
      * Company constructor.

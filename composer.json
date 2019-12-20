@@ -1,5 +1,5 @@
 {
-    "name": "jketelaar/php-KiyOh-api",
+    "name": "jketelaar/php-Kiyoh-api",
     "type": "library",
     "version": "2.0.2",
     "authors": [
@@ -15,15 +15,15 @@
         "api",
         "php"
     ],
-    "homepage": "https://github.com/JKetelaar/PHP-KiyOh-API",
+    "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
     "license": "GPL-3.0+",
     "require": {
-        "php": "~7.1",
+        "php": "~7.4",
         "ext-simplexml": "*",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "7",
+        "phpunit/phpunit": "8.5.*",
         "seferov/typhp": "^0.2.0",
         "friendsofphp/php-cs-fixer": "^2.16"
     },
@@ -34,7 +34,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.1"
+            "php": "7.4"
         }
     }
 }

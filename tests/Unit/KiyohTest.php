@@ -3,30 +3,30 @@
  * @author JKetelaar
  */
 
-namespace JKetelaar\Kiyoh\Tests\Unit;
+namespace JKetelaar\KiyOh\Tests\Unit;
 
-use JKetelaar\Kiyoh\Kiyoh;
+use JKetelaar\KiyOh\KiyOh;
 use PHPUnit\Framework\TestCase;
 
-final class KiyohTest extends TestCase
+final class KiyOhTest extends TestCase
 {
-    const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
+    const KiyOh_KEY_ENV_KEY = 'KiyOh_KEY';
     const REVIEW_COUNT = 5;
 
-    public function testKiyoh()
+    public function testKiyOh()
     {
-        $kiyohKey = getenv(self::KIYOH_KEY_ENV_KEY);
-        $this->assertNotFalse($kiyohKey);
+        $KiyOhKey = getenv(self::KiyOh_KEY_ENV_KEY);
+        $this->assertNotFalse($KiyOhKey);
 
-        $kiyoh = new Kiyoh($kiyohKey, self::REVIEW_COUNT);
+        $KiyOh = new KiyOh($KiyOhKey, self::REVIEW_COUNT);
 
-        $company = $kiyoh->getCompany();
+        $company = $KiyOh->getCompany();
         $this->assertNotNull($company);
 
         $averageRating = $company->getAverageRating();
         $this->assertGreaterThan(0, $averageRating);
 
-        $reviews = $kiyoh->getCompany()->getReviews();
+        $reviews = $KiyOh->getCompany()->getReviews();
         $this->assertNotNull($reviews);
         $this->assertEquals(self::REVIEW_COUNT, count($reviews));
     }

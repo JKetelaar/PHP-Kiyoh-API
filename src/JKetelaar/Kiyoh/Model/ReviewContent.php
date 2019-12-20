@@ -1,36 +1,56 @@
 <?php
+
+namespace JKetelaar\KiyOh\Model;
+
 /**
  * @author JKetelaar
+ *
+ * Class ReviewContent.
+ *
+ * @package JKetelaar\KiyOh\Model
  */
-
-namespace JKetelaar\Kiyoh\Model;
-
 class ReviewContent
 {
     /**
-     * @var string
+     * The group of the current review content.
+     *
+     * There are different content groups
+     * - DEFAULT_OVERALL   (The review rating)
+     * - DEFAULT_ONELINER  (A small description)
+     * - DEFAULT_OPINION   (A detailed description of the users experience)
+     * - DEFAULT_RECOMMEND (Whether the user recommends the current product / service)
+     *
+     * @var string $group
      */
-    private $group;
+    private string $group;
 
     /**
-     * @var string
+     * The scalar type the current content has.
+     *
+     * @var string $type
      */
-    private $type;
+    private string $type;
 
     /**
-     * @var string
+     * The rating of the current of the review, this will be casted to a string.
+     *
+     * @var string $rating
      */
-    private $rating;
+    private string $rating;
 
     /**
-     * @var int
+     * The order of the content.
+     *
+     * @var int $order
      */
-    private $order;
+    private int $order;
 
     /**
-     * @var string
+     * The translation for the content.
+     *
+     * @var string $translation
      */
-    private $translation;
+    private string $translation;
 
     /**
      * ReviewContent constructor.
@@ -71,11 +91,12 @@ class ReviewContent
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getRating()
+    public function getRating(): string
     {
         $rating = $this->rating;
+
         switch ($this->getType()) {
             case 'INT':
                 $rating = intval($rating);
