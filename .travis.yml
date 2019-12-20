@@ -11,8 +11,11 @@ before_script:
     - travis_retry composer install --no-interaction
 
 script:
-    - vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover coverage.xml
+    - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
     - vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --config=.php-cs.php --using-cache=no --dry-run
+
+after_script:
+    - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.xml
 
 env:
     global:
