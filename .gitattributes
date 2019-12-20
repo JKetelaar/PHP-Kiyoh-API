@@ -10,6 +10,6 @@
 /ISSUE_TEMPLATE.md          export-ignore
 /LICENSE.md                 export-ignore
 /README.md                  export-ignore
-/.php-cs.php                 export-ignore
+/.php-cs.php                export-ignore
 /tests                      export-ignore
 /docs                       export-ignore
