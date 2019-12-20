@@ -17,6 +17,16 @@
         "infra",
         "ideas"
       ]
+    },
+    {
+      "login": "menno-ll",
+      "name": "Menno van den Ende",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/50165380?v=4",
+      "profile": "https://github.com/menno-ll",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
