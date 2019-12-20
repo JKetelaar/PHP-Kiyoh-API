@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-# A PHP KiyOh API
-[![Build Status](https://travis-ci.com/JKetelaar/PHP-KiyOh-API.svg?branch=master)](https://travis-ci.com/JKetelaar/PHP-KiyOh-API)
-=======
 # A PHP KiyOh API
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Build Status](https://travis-ci.com/JKetelaar/PHP-KiyOh-API.svg?branch=master)](https://travis-ci.com/JKetelaar/PHP-KiyOh-API)
->>>>>>> 360988d008c5ff037a2a6ecb4558db04ee378ca8
 
 ## How to install?
 Install this project using composer: `composer require jketelaar/php-KiyOh-api`.
