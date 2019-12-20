@@ -10,6 +10,7 @@ before_script:
     - travis_retry composer install --no-interaction
 
 script:
+    - vendor/bin/typhp
     - vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover coverage.xml
     - vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --config=.php-cs.php --using-cache=no --dry-run
 
