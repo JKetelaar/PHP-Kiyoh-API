@@ -1,5 +1,5 @@
 {
-    "name": "jketelaar/php-kiyoh-api",
+    "name": "jketelaar/php-KiyOh-api",
     "type": "library",
     "version": "2.0.2",
     "authors": [
@@ -11,19 +11,20 @@
     ],
     "description": "Allows you to interact with KiyOh using PHP",
     "keywords": [
-        "kiyoh",
+        "KiyOh",
         "api",
         "php"
     ],
-    "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
+    "homepage": "https://github.com/JKetelaar/PHP-KiyOh-API",
     "license": "GPL-3.0+",
     "require": {
         "php": "~7.1",
-        "guzzlehttp/guzzle": "^6.2",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "phpunit/phpunit": "7",
+        "seferov/typhp": "^0.2.0",
         "friendsofphp/php-cs-fixer": "^2.16"
     },
     "autoload": {
