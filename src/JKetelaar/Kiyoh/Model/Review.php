@@ -1,54 +1,75 @@
 <?php
-/**
- * @author JKetelaar
- */
 
-namespace JKetelaar\Kiyoh\Model;
+namespace JKetelaar\KiyOh\Model;
 
 use DateTime;
 use Exception;
 
+/**
+ * @author JKetelaar
+ *
+ * Class Review.
+ *
+ * @package JKetelaar\KiyOh\Model
+ */
 class Review
 {
     /**
-     * @var string
+     * The unique review ID assigned by KiyOh.
+     *
+     * @var string $id
      */
-    private $id;
+    private string $id;
 
     /**
-     * @var string
+     * The author of this review.
+     *
+     * @var string $author
      */
-    private $author;
+    private string $author;
 
     /**
-     * @var string
+     * The city where the author of this review is located.
+     *
+     * @var string $city
      */
-    private $city;
+    private string $city;
 
     /**
-     * @var float
+     * The rating of this review.
+     *
+     * @var float $rating
      */
-    private $rating;
+    private float $rating;
 
     /**
-     * @var string
+     * The comment of this review.
+     *
+     * @var string $comment
      */
-    private $comment;
+    private string $comment;
 
     /**
-     * @var ReviewContent[]
+     * An array of instances of the Content class.
+     * These content classes belong to this current review.
+     *
+     * @var ReviewContent[] $content
      */
-    private $content;
+    private array $content;
 
     /**
-     * @var DateTime
+     * A datetime instance of the date when this review got written.
+     *
+     * @var DateTime $dateSince
      */
-    private $dateSince;
+    private DateTime $dateSince;
 
     /**
-     * @var DateTime
+     * A datetime instance of the last date this review got updated.
+     *
+     * @var DateTime $updatedSince
      */
-    private $updatedSince;
+    private DateTime $updatedSince;
 
     /**
      * Review constructor.
@@ -165,8 +186,6 @@ class Review
     }
 
     /**
-     * Retrieves the comment from the company to the review.
-     *
      * @return string (multiline)
      */
     public function getComment(): string
@@ -175,8 +194,6 @@ class Review
     }
 
     /**
-     * Sets the comment from the company to the review.
-     *
      * @param string $comment (multiline)
      *
      * @return Review
@@ -228,6 +245,14 @@ class Review
     }
 
     /**
+     * Setter each content item for the review.
+     *
+     * There are different content groups
+     * - DEFAULT_OVERALL   (The review rating)
+     * - DEFAULT_ONELINER  (A small description)
+     * - DEFAULT_OPINION   (A detailed description of the users experience)
+     * - DEFAULT_RECOMMEND (Whether the user recommends the current product / service)
+     *
      * @param string        $groupName
      * @param ReviewContent $reviewContent
      *

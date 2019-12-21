@@ -1,25 +1,29 @@
 <?php
-/**
- * @author JKetelaar
- */
 
-namespace JKetelaar\Kiyoh\Tests\Unit;
+namespace JKetelaar\KiyOh\Tests\Unit;
 
-use JKetelaar\Kiyoh\Kiyoh;
+use JKetelaar\KiyOh\KiyOh;
 use PHPUnit\Framework\TestCase;
 
-final class KiyohTest extends TestCase
+/**
+ * @author JKetelaar
+ *
+ * Class KiyOhTest.
+ *
+ * @package JKetelaar\KiyOh\Tests\Unit
+ */
+final class KiyOhTest extends TestCase
 {
-    const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
-    const REVIEW_COUNT = 5;
+    public const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
+    public const REVIEW_COUNT = 5;
 
-    public function testKiyoh()
+    public function testKiyOh()
     {
-        // TODO: This will fail on Pull Requests (@see https://github.com/JKetelaar/PHP-Kiyoh-API/pull/16#issuecomment-562236830)
+        // TODO: This will fail on Pull Requests (@see https://github.com/JKetelaar/PHP-KiyOh-API/pull/16#issuecomment-562236830)
         $kiyohKey = getenv(self::KIYOH_KEY_ENV_KEY);
         $this->assertNotFalse($kiyohKey);
 
-        $kiyoh = new Kiyoh($kiyohKey, self::REVIEW_COUNT);
+        $kiyoh = new KiyOh($kiyohKey, self::REVIEW_COUNT);
 
         $company = $kiyoh->getCompany();
         $this->assertNotNull($company);

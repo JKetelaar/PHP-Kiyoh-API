@@ -1,0 +1,10 @@
+preset: recommended
+enabled:
+    - length_ordered_imports
+    - concat_with_spaces
+disabled:
+    - normalize_index_brace
+    - alpha_ordered_imports
+    - short_array_syntax
+    - phpdoc_no_package
+    - concat_without_spaces
