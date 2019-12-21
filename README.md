@@ -1,6 +1,6 @@
 # A PHP Kiyoh API
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Build Status](https://travis-ci.com/JKetelaar/PHP-Kiyoh-API.svg?branch=master)](https://travis-ci.com/JKetelaar/PHP-Kiyoh-API)
 
@@ -56,6 +56,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://jketelaar.nl/"><img src="https://avatars0.githubusercontent.com/u/3681904?v=4" width="100px;" alt=""/><br /><sub><b>Jeroen Ketelaar</b></sub></a><br /><a href="#maintenance-JKetelaar" title="Maintenance">🚧</a> <a href="https://github.com/JKetelaar/PHP-Kiyoh-API/pulls?q=is%3Apr+reviewed-by%3AJKetelaar" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/JKetelaar/PHP-Kiyoh-API/commits?author=JKetelaar" title="Code">💻</a> <a href="#infra-JKetelaar" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-JKetelaar" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/menno-ll"><img src="https://avatars0.githubusercontent.com/u/50165380?v=4" width="100px;" alt=""/><br /><sub><b>Menno van den Ende</b></sub></a><br /><a href="https://github.com/JKetelaar/PHP-Kiyoh-API/commits?author=menno-ll" title="Code">💻</a> <a href="#ideas-menno-ll" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://mediadevs.nl"><img src="https://avatars3.githubusercontent.com/u/38211249?v=4" width="100px;" alt=""/><br /><sub><b>Mike van Diepen</b></sub></a><br /><a href="https://github.com/JKetelaar/PHP-Kiyoh-API/commits?author=mikevandiepen" title="Code">💻</a> <a href="https://github.com/JKetelaar/PHP-Kiyoh-API/commits?author=mikevandiepen" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

@@ -27,6 +27,16 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "mikevandiepen",
+      "name": "Mike van Diepen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/38211249?v=4",
+      "profile": "http://mediadevs.nl",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
