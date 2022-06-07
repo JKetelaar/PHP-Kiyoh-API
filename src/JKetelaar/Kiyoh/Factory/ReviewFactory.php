@@ -62,10 +62,11 @@ class ReviewFactory
         $comment = (isset($element->reviewComments) ? $element->reviewComments : '');
         $dateSince = $element->dateSince;
         $updatedSince = $element->updatedSince;
+        $referenceCode = $element->referenceCode;
 
         $content = self::createReviewContent($element->reviewContent->reviewContent);
 
-        $review = new Review($id, $author, $city, (float) $rating, $comment, $dateSince, $updatedSince);
+        $review = new Review($id, $author, $city, (float) $rating, $comment, $dateSince, $updatedSince, $referenceCode);
         $review->setContent($content);
 
         return $review;
