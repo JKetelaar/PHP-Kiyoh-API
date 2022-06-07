@@ -37,6 +37,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "joldnl",
+      "name": "joldnl",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4668261?v=4",
+      "profile": "https://github.com/joldnl",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
