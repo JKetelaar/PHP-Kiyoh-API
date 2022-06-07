@@ -60,6 +60,7 @@ class Review
      * @param string $comment
      * @param string $dateSince
      * @param string $updatedSince
+     * @param string $referenceCode
      */
     public function __construct(
         string $id,
@@ -68,13 +69,15 @@ class Review
         float $rating,
         string $comment,
         string $dateSince,
-        string $updatedSince
+        string $updatedSince,
+        string $referenceCode
     ) {
         $this->id = $id;
         $this->author = $author;
         $this->city = $city;
         $this->rating = $rating;
         $this->comment = $comment;
+        $this->referenceCode = $referenceCode;
 
         try {
             $this->dateSince = new DateTime($dateSince);
@@ -281,6 +284,26 @@ class Review
     public function setUpdatedSince(DateTime $updatedSince): self
     {
         $this->updatedSince = $updatedSince;
+
+        return $this;
+    }
+
+    /**
+     * Retrieves the referenceCode from the  review.
+     * @return string
+     */
+    public function getReferenceCode(): string {
+        return $this->referenceCode;
+    }
+
+    /**
+     * @param string $referenceCode
+     *
+     * @return Review
+     */
+    public function setReferenceCode(string $referenceCode): self
+    {
+        $this->referenceCode = $referenceCode;
 
         return $this;
     }
