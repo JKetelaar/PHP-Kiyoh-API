@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author JKetelaar
  */
@@ -29,6 +32,6 @@ final class KiyohTest extends TestCase
 
         $reviews = $kiyoh->getCompany()->getReviews();
         $this->assertNotNull($reviews);
-        $this->assertEquals(self::REVIEW_COUNT, count($reviews));
+        $this->assertCount(self::REVIEW_COUNT, $reviews);
     }
 }
