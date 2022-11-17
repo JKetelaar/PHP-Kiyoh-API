@@ -22,28 +22,20 @@ class ReviewFactory
      */
     public static function createCompany(SimpleXMLElement $element): Company
     {
-        $averageRating = $element->averageRating;
-        $numberReviews = $element->numberReviews;
-        $last12MonthAverageRating = $element->last12MonthAverageRating;
-        $last12MonthNumberReviews = $element->last12MonthNumberReviews;
-        $percentageRecommendation = $element->percentageRecommendation;
-        $locationId = $element->locationId;
-        $locationName = $element->locationName;
-
         $company = new Company(
-            (float) $averageRating,
-            (int) $numberReviews,
-            (float) $last12MonthAverageRating,
-            (int) $last12MonthNumberReviews,
-            (int) $percentageRecommendation,
-            (int) $locationId,
-            $locationName
+            (float) $element->averageRating,
+            (int) $element->numberReviews,
+            (float) $element->last12MonthAverageRating,
+            (int) $element->last12MonthNumberReviews,
+            (int) $element->percentageRecommendation,
+            (int) $element->locationId,
+            (string) $element->locationName
         );
 
         $reviews = [];
 
         foreach ($element->reviews->reviews as $review) {
-            $reviews[] = (self::createReview($review));
+            $reviews[] = self::createReview($review);
         }
 
         $company->setReviews($reviews);
@@ -58,19 +50,17 @@ class ReviewFactory
      */
     public static function createReview(SimpleXMLElement $element): Review
     {
-        $id = $element->reviewId;
-        $author = $element->reviewAuthor;
-        $city = $element->city;
-        $rating = $element->rating;
-        $comment = (isset($element->reviewComments) ? $element->reviewComments : '');
-        $dateSince = $element->dateSince;
-        $updatedSince = $element->updatedSince;
-        $referenceCode = $element->referenceCode;
-
-        $content = self::createReviewContent($element->reviewContent->reviewContent);
-
-        $review = new Review($id, $author, $city, (float) $rating, $comment, $dateSince, $updatedSince, $referenceCode);
-        $review->setContent($content);
+        $review = new Review(
+            (string) $element->reviewId,
+            (string) $element->reviewAuthor,
+            (string) $element->city,
+            (float) $element->rating,
+            (isset($element->reviewComments) ? (string) $element->reviewComments : ''),
+            (string) $element->dateSince,
+            (string) $element->updatedSince,
+            (string) $element->referenceCode
+        );
+        $review->setContent(self::createReviewContent($element->reviewContent->reviewContent));
 
         return $review;
     }
@@ -85,13 +75,13 @@ class ReviewFactory
         $content = [];
 
         foreach ($elements as $element) {
-            $group = $element->questionGroup;
-            $type = $element->questionType;
-            $rating = $element->rating;
-            $order = $element->order;
-            $translation = $element->questionTranslation;
-
-            $content[] = new ReviewContent($group, $type, $rating, (int) $order, $translation);
+            $content[] = new ReviewContent(
+                (string) $element->questionGroup,
+                (string) $element->questionType,
+                (string) $element->rating,
+                (int) $element->order,
+                (string) $element->questionTranslation
+            );
         }
 
         return $content;
