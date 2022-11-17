@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 final class KiyohTest extends TestCase
 {
-    const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
-    const REVIEW_COUNT = 5;
+    private const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
+    private const REVIEW_COUNT = 5;
 
     public function testKiyoh()
     {

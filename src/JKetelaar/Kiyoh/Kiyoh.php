@@ -14,7 +14,7 @@ use JKetelaar\Kiyoh\Model\Company;
 
 class Kiyoh
 {
-    const COMPANY_REVIEWS_URL = 'https://www.kiyoh.com/v1/review/feed.xml?hash=%s&limit=%s';
+    public const COMPANY_REVIEWS_URL = 'https://www.kiyoh.com/v1/review/feed.xml?hash=%s&limit=%s';
 
     /**
      * @var string
