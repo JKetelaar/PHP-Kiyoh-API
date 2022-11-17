@@ -17,22 +17,17 @@
     "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
     "license": "GPL-3.0+",
     "require": {
-        "php": "~7.1",
-        "guzzlehttp/guzzle": "^6.2",
-        "ext-simplexml": "*"
+        "php": "~7.3 || ^8.0",
+        "ext-simplexml": "*",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "7",
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-0": {
             "JKetelaar": "src/"
-        }
-    },
-    "config": {
-        "platform": {
-            "php": "7.1"
         }
     }
 }

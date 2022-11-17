@@ -1,6 +1,9 @@
 <?php
-return PhpCsFixer\Config::create()
-    ->setRiskyAllowed(true)
+
+declare(strict_types=1);
+
+$config = new PhpCsFixer\Config();
+$config ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
         'full_opening_tag' => true,
@@ -15,5 +18,5 @@ return PhpCsFixer\Config::create()
     ->setFinder(PhpCsFixer\Finder::create()
         ->exclude('vendor')
         ->in(__DIR__ . '/src')
-    )
-;
+    );
+return $config;
