@@ -46,6 +46,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "fruitl00p",
+      "name": "Robin Speekenbrink",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1492861?v=4",
+      "profile": "http://www.kingsquare.nl/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -53,5 +62,6 @@
   "projectOwner": "JKetelaar",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
