@@ -295,7 +295,8 @@ class Review
      * Retrieves the referenceCode from the  review.
      * @return string
      */
-    public function getReferenceCode(): string {
+    public function getReferenceCode(): string
+    {
         return $this->referenceCode;
     }
 
