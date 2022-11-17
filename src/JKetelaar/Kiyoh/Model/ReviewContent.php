@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author JKetelaar
  */
@@ -78,13 +81,13 @@ class ReviewContent
         $rating = $this->rating;
         switch ($this->getType()) {
             case 'INT':
-                $rating = intval($rating);
+                $rating = (int) $rating;
                 break;
             case 'BOOLEAN':
                 $rating = filter_var($rating, FILTER_VALIDATE_BOOLEAN);
                 break;
             default:
-                $rating = strval($rating);
+                $rating = (string) $rating;
                 break;
         }
 
@@ -103,7 +106,7 @@ class ReviewContent
                 $rating = $this->validateRating($rating);
                 break;
             default:
-                $rating = strval($rating);
+                $rating = (string) $rating;
                 break;
         }
         $this->rating = $rating;
@@ -138,11 +141,7 @@ class ReviewContent
      */
     private function validateRating(string $rating): string
     {
-        if (is_bool($rating)) {
-            return $rating ? 'true' : 'false';
-        } else {
-            return strval($rating);
-        }
+        return $rating;
     }
 
     /**

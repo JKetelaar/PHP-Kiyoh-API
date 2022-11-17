@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author JKetelaar
  */
@@ -10,8 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 final class KiyohTest extends TestCase
 {
-    const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
-    const REVIEW_COUNT = 5;
+    private const KIYOH_KEY_ENV_KEY = 'KIYOH_KEY';
+    private const REVIEW_COUNT = 5;
 
     public function testKiyoh()
     {
@@ -29,6 +32,6 @@ final class KiyohTest extends TestCase
 
         $reviews = $kiyoh->getCompany()->getReviews();
         $this->assertNotNull($reviews);
-        $this->assertEquals(self::REVIEW_COUNT, count($reviews));
+        $this->assertCount(self::REVIEW_COUNT, $reviews);
     }
 }
