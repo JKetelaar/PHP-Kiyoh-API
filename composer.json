@@ -17,8 +17,9 @@
     "homepage": "https://github.com/JKetelaar/PHP-Kiyoh-API",
     "license": "GPL-3.0+",
     "require": {
-        "php": "~7.3 || ^8.0",
+        "php": "^8.0",
         "ext-simplexml": "*",
+        "guzzlehttp/guzzle": "^7.5"
         "guzzlehttp/guzzle": "^6.2 || ^7.0"
     },
     "require-dev": {

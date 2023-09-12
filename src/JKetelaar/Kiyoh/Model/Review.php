@@ -14,74 +14,26 @@ use Exception;
 class Review
 {
     /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $author;
-
-    /**
-     * @var string
-     */
-    private $city;
-
-    /**
-     * @var float
-     */
-    private $rating;
-
-    /**
-     * @var string
-     */
-    private $comment;
-
-    /**
      * @var ReviewContent[]
      */
-    private $content;
+    private array $content;
 
-    /**
-     * @var DateTime
-     */
-    private $dateSince;
-
-    /**
-     * @var DateTime
-     */
-    private $updatedSince;
+    private DateTime $dateSince;
+    private DateTime $updatedSince;
 
     /**
      * Review constructor.
-     *
-     * @param string $id
-     * @param string $author
-     * @param string $city
-     * @param float  $rating
-     * @param string $comment
-     * @param string $dateSince
-     * @param string $updatedSince
-     * @param string $referenceCode
      */
     public function __construct(
-        string $id,
-        string $author,
-        string $city,
-        float $rating,
-        string $comment,
+        private string $id,
+        private string $author,
+        private string $city,
+        private float $rating,
+        private string $comment,
         string $dateSince,
         string $updatedSince,
-        string $referenceCode
+        private string $referenceCode
     ) {
-        $this->id = $id;
-        $this->author = $author;
-        $this->city = $city;
-        $this->rating = $rating;
-        $this->comment = $comment;
-        $this->referenceCode = $referenceCode;
-
         try {
             $this->dateSince = new DateTime($dateSince);
             $this->updatedSince = new DateTime($updatedSince);
@@ -90,19 +42,11 @@ class Review
         }
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     *
-     * @return Review
-     */
     public function setId(string $id): self
     {
         $this->id = $id;
@@ -110,19 +54,11 @@ class Review
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAuthor(): string
     {
         return $this->author;
     }
 
-    /**
-     * @param string $author
-     *
-     * @return Review
-     */
     public function setAuthor(string $author): self
     {
         $this->author = $author;
@@ -130,19 +66,11 @@ class Review
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCity(): string
     {
         return $this->city;
     }
 
-    /**
-     * @param string $city
-     *
-     * @return Review
-     */
     public function setCity(string $city): self
     {
         $this->city = $city;
@@ -150,19 +78,11 @@ class Review
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getRating(): float
     {
         return $this->rating;
     }
 
-    /**
-     * @param float $rating
-     *
-     * @return Review
-     */
     public function setRating(float $rating): self
     {
         $this->rating = $rating;
@@ -172,8 +92,6 @@ class Review
 
     /**
      * Retrieves the comment from the company to the review.
-     *
-     * @return string (multiline)
      */
     public function getComment(): string
     {
@@ -182,10 +100,6 @@ class Review
 
     /**
      * Sets the comment from the company to the review.
-     *
-     * @param string $comment (multiline)
-     *
-     * @return Review
      */
     public function setComment(string $comment): self
     {
@@ -195,7 +109,7 @@ class Review
     }
 
     /**
-     * @return ReviewContent[]
+     * @return array<int, ReviewContent>
      */
     public function getContent(): array
     {
@@ -204,8 +118,6 @@ class Review
 
     /**
      * @param ReviewContent[] $content
-     *
-     * @return Review
      */
     public function setContent(array $content): self
     {
@@ -214,56 +126,34 @@ class Review
         return $this;
     }
 
-    /**
-     * @param string $groupName
-     *
-     * @return ReviewContent|null
-     */
     public function getContentItem(string $groupName): ?ReviewContent
     {
-        $foundContentItem = null;
-
         foreach ($this->content as $contentItem) {
             if ($contentItem->getGroup() === $groupName) {
-                $foundContentItem = $contentItem;
-                break;
+                return $contentItem;
             }
         }
 
-        return $foundContentItem;
+        return null;
     }
 
-    /**
-     * @param string        $groupName
-     * @param ReviewContent $reviewContent
-     *
-     * @return Review
-     */
     public function setContentItem(string $groupName, ReviewContent $reviewContent): self
     {
         foreach ($this->content as $contentItemIndex => $contentItem) {
             if ($contentItem->getGroup() === $groupName) {
                 $this->content[$contentItemIndex] = $reviewContent;
-                break;
+                return $this;
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return DateTime
-     */
     public function getDateSince(): DateTime
     {
         return $this->dateSince;
     }
 
-    /**
-     * @param DateTime $dateSince
-     *
-     * @return Review
-     */
     public function setDateSince(DateTime $dateSince): self
     {
         $this->dateSince = $dateSince;
@@ -271,19 +161,11 @@ class Review
         return $this;
     }
 
-    /**
-     * @return DateTime
-     */
     public function getUpdatedSince(): DateTime
     {
         return $this->updatedSince;
     }
 
-    /**
-     * @param DateTime $updatedSince
-     *
-     * @return Review
-     */
     public function setUpdatedSince(DateTime $updatedSince): self
     {
         $this->updatedSince = $updatedSince;
@@ -293,18 +175,12 @@ class Review
 
     /**
      * Retrieves the referenceCode from the  review.
-     * @return string
      */
     public function getReferenceCode(): string
     {
         return $this->referenceCode;
     }
 
-    /**
-     * @param string $referenceCode
-     *
-     * @return Review
-     */
     public function setReferenceCode(string $referenceCode): self
     {
         $this->referenceCode = $referenceCode;

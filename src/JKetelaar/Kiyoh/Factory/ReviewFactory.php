@@ -15,11 +15,6 @@ use SimpleXMLElement;
 
 class ReviewFactory
 {
-    /**
-     * @param SimpleXMLElement $element
-     *
-     * @return Company
-     */
     public static function createCompany(SimpleXMLElement $element): Company
     {
         $company = new Company(
@@ -43,11 +38,6 @@ class ReviewFactory
         return $company;
     }
 
-    /**
-     * @param SimpleXMLElement $element
-     *
-     * @return Review
-     */
     public static function createReview(SimpleXMLElement $element): Review
     {
         $review = new Review(
@@ -68,7 +58,7 @@ class ReviewFactory
     /**
      * @param SimpleXMLElement $elements
      *
-     * @return array
+     * @return array<int, ReviewContent>
      */
     public static function createReviewContent(SimpleXMLElement $elements): array
     {
